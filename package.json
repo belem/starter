@@ -1,0 +1,39 @@
+{
+	"name": "starter",
+	"version": "0.0.1",
+	"private": true,
+	"scripts": {
+		"dev": "vite dev --host",
+		"build": "vite build",
+		"preview": "vite preview",
+		"lint": "prettier --check . && eslint .",
+		"format": "prettier --write ."
+	},
+	"devDependencies": {
+		"@sveltejs/adapter-auto": "^3.2.4",
+		"@sveltejs/kit": "^2.5.25",
+		"@sveltejs/vite-plugin-svelte": "^4.0.0-next.6",
+		"@tailwindcss/typography": "^0.5.15",
+		"@types/eslint": "^9.6.1",
+		"autoprefixer": "^10.4.20",
+		"eslint": "^9.9.1",
+		"eslint-config-prettier": "^9.1.0",
+		"eslint-plugin-svelte": "^2.43.0",
+		"globals": "^15.9.0",
+		"lucide-svelte": "^0.438.0",
+		"prettier": "^3.3.3",
+		"prettier-plugin-svelte": "^3.2.6",
+		"prettier-plugin-tailwindcss": "^0.6.6",
+		"svelte": "^5.0.0-next.243",
+		"tailwindcss": "^3.4.10",
+		"vite": "^5.4.3"
+	},
+	"type": "module",
+	"dependencies": {
+		"bits-ui": "^0.21.13",
+		"clsx": "^2.1.1",
+		"mode-watcher": "^0.4.1",
+		"tailwind-merge": "^2.5.2",
+		"tailwind-variants": "^0.2.1"
+	}
+}
