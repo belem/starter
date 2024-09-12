@@ -11,7 +11,6 @@
 
 <Sheet.Root bind:open>
 	<Sheet.Trigger asChild let:builder>
-
 		<Button
 			builders={[builder]}
 			variant="ghost"
