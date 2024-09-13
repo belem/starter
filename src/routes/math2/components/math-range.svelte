@@ -8,48 +8,48 @@
   import Label from "$lib/components/ui/label/label.svelte";
   import { cn } from "$lib/utils.js";
   import * as m from '$lib/paraglide/messages.js';
-  
-  const o1Add = m.math_bf_sb_o1_add();
-  const o1Sub = m.math_bf_sb_o1_sub();
-  const o1Mul = m.math_bf_sb_o1_mul();
-  const o1Div = m.math_bf_sb_o1_div();
-  const o1AddSub = m.math_bf_sb_o1_addsub();
-  const o1AddMul = m.math_bf_sb_o1_addmul();
-  const o1MulDiv = m.math_bf_sb_o1_muldiv();
-  const o1All = m.math_bf_sb_o1_all();
 
-  const mathFacts = [
+  const math_bf_sb_o4_10 = m.math_bf_sb_o4_10();
+  const math_bf_sb_o4_20 = m.math_bf_sb_o4_20();
+  const math_bf_sb_o4_50 = m.math_bf_sb_o4_50();
+  const math_bf_sb_o4_100 = m.math_bf_sb_o4_100();
+  const math_bf_sb_o4_1000 = m.math_bf_sb_o4_1000();
+  const math_bf_sb_o4_10000 = m.math_bf_sb_o4_10000();
+  const math_bf_sb_o4_100000 = m.math_bf_sb_o4_100000();
+  const math_bf_sb_o4_1000000 = m.math_bf_sb_o4_1000000();
+
+  const mathRanges = [
    {
-    value: "add",
-    label: o1Add
+    value: "range_10",
+    label: math_bf_sb_o4_10
    },
    {
-    value: "sub",
-    label: o1Sub
+    value: "range_20",
+    label: math_bf_sb_o4_20
    },
    {
-    value: "mul",
-    label: o1Mul
+    value: "range_50",
+    label: math_bf_sb_o4_50
    },
    {
-    value: "div",
-    label: o1Div
+    value: "range_100",
+    label: math_bf_sb_o4_100
    },
    {
-    value: "addsub",
-    label: o1AddSub
+    value: "range_1000",
+    label: math_bf_sb_o4_1000
    },
    {
-    value: "addmul",
-    label: o1AddMul
+    value: "range_10000",
+    label: math_bf_sb_o4_10000
    },
    {
-    value: "muldiv",
-    label: o1MulDiv
+    value: "range_100000",
+    label: math_bf_sb_o4_100000
    },
    {
-    value: "all",
-    label: o1All
+    value: "range_1000000",
+    label: math_bf_sb_o4_1000000
    }
   ];
   
@@ -57,7 +57,7 @@
   let value = "";
   
   $: selectedValue =
-   mathFacts.find((f) => f.value === value)?.label ?? o1Add;
+   mathRanges.find((f) => f.value === value)?.label ?? math_bf_sb_o4_20;
   
   // We want to refocus the trigger button when the user selects
   // an item from the list so users can continue navigating the
@@ -72,7 +72,7 @@
   
  <Popover.Root bind:open let:ids>
   <Popover.Trigger asChild let:builder>
-   <Label for="number">{m.math_bf_sb_o1_title()}</Label>
+   <Label for="number">{m.math_bf_sb_o4_title()}</Label>
    <Button
     builders={[builder]}
     variant="outline"
@@ -87,9 +87,9 @@
   <Popover.Content class="w-[312px] md:w-[200px] p-0">
    <Command.Root>
     <Command.Group>
-     {#each mathFacts as mathFact}
+     {#each mathRanges as mathRange}
       <Command.Item
-       value={mathFact.value}
+       value={mathRange.value}
        onSelect={(currentValue) => {
         value = currentValue;
         closeAndFocusTrigger(ids.trigger);
@@ -98,10 +98,10 @@
        <Check
         class={cn(
          "mr-2 h-4 w-4",
-         value !== mathFact.value && "text-transparent"
+         value !== mathRange.value && "text-transparent"
         )}
        />
-       {mathFact.label}
+       {mathRange.label}
       </Command.Item>
      {/each}
     </Command.Group>

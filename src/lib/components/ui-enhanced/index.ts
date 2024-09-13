@@ -20,6 +20,7 @@ export { default as TailwindIndicator } from "./tailwind-indicator.svelte";
 export { default as CommandMenu } from "./command-menu.svelte";
 export { default as ModeToggle } from "./mode-toggle.svelte";
 export { default as LanguageSwitcher } from "./language-switcher.svelte";
+export { default as UserNav } from './user-nav.svelte';
 // export { default as Announcement } from "./announcement.svelte";
 // export { default as LinkedCard } from "./linked-card.svelte";
 // export { default as PMExecute } from "./pm-execute.svelte";

@@ -4,7 +4,8 @@
   "languageTags": [
     "en",
     "cn",
-    "de"
+    "de",
+    "jp"
   ],
   "modules": [
     "./node_modules/@inlang/plugin-message-format/dist/index.js",

@@ -3,6 +3,7 @@
 	import * as HoverCard from "$lib/components/ui/hover-card/index.js";
 	import { Label } from "$lib/components/ui/label/index.js";
 	import { Slider } from "$lib/components/ui/slider/index.js";
+	import * as m from '$lib/paraglide/messages.js';
 
 	export let value: SliderPrimitive.Props["value"];
 </script>
@@ -12,7 +13,7 @@
 		<HoverCard.Trigger asChild let:builder>
 			<div class="grid gap-4" use:builder.action {...builder}>
 				<div class="flex items-center justify-between">
-					<Label for="number">Number</Label>
+					<Label for="number">{m.math_bf_sb_o3_title()}</Label>
 					<span
 						class="text-muted-foreground hover:border-border w-12 rounded-md border border-transparent px-2 py-0.5 text-right text-sm"
 					>
@@ -30,7 +31,7 @@
 			</div>
 		</HoverCard.Trigger>
 		<HoverCard.Content class="w-[260px] text-sm" align="start" side="left">
-			Number of problems: 10, 20, 30, 40, 50, 60, 70, 80, 90, 100
+			{m.math_bf_sb_o3_hover()}
 		</HoverCard.Content>
 	</HoverCard.Root>
 </div>

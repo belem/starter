@@ -3,16 +3,18 @@
 	import { i18n } from '$lib/i18n.js';
 	import { page } from '$app/stores';
 	import { Button } from '$lib/components/ui/button/index.js';
-	import Language from './icons/language.svelte';
 	import * as DropdownMenu from '$lib/components/ui/dropdown-menu/index.js';
 	import '/node_modules/flag-icons/css/flag-icons.min.css';
 	import { onMount } from 'svelte';
 
 	let currentLanguage = $state(languageTag());
-	let flag = $state('gb');
+	let flag = $state('us');
+	console.log(currentLanguage)
 	onMount(() => {
 		if (currentLanguage === 'en') {
 			flag = 'us';
+		} else if(currentLanguage === 'jp') {
+			flag = 'jp';
 		} else {
 			flag = currentLanguage;
 		}
@@ -21,7 +23,7 @@
 
 <DropdownMenu.Root>
 	<DropdownMenu.Trigger asChild let:builder>
-		<Button variant="ghost" builders={[builder]}>
+		<Button variant="ghost" builders={[builder]} class="px-2 py-1">
 			<span class="fi fi-{flag}"></span>
 		</Button>
 	</DropdownMenu.Trigger>
@@ -38,6 +40,8 @@
 							<span class="fi fi-de"></span> Deutsch
 						{:else if lang === 'cn'}
 							<span class="fi fi-cn"></span> 简体中文
+						{:else if lang === 'jp'}
+							<span class="fi fi-jp"></span> 日本語
 						{:else}
 							<span class="fi fi-us"></span> English
 						{/if}

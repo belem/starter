@@ -8,14 +8,14 @@
 >
 	<div class="bg-muted relative hidden h-full flex-col p-10 text-white lg:flex dark:border-r">
 		<div
-			class="absolute inset-0 bg-cover"
+			class="absolute inset-0 bg-contain"
 			style="
 				background-image:
-					url(https://images.unsplash.com/photo-1590069261209-f8e9b8642343?w=1376&q=80);"
+					url(/images/login/login-min.jpg);"
 		></div>
 		<div class="relative z-20 flex items-center text-lg font-medium">
 			<!-- <Command class="mr-2 h-6 w-6" /> -->
-			Hello Haha, Ashley
+			Hello Haha and Ashley
 		</div>
 		<div class="relative z-20 mt-auto">
 			<blockquote class="space-y-2">

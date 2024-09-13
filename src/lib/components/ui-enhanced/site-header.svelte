@@ -5,7 +5,8 @@
 		MainNav,
 		MobileNav,
 		ModeToggle,
-		LanguageSwitcher
+		LanguageSwitcher,
+		UserNav
 	} from "$lib/components/ui-enhanced/index.js";
 	import { buttonVariants } from "$lib/components/ui/button/index.js";
 	import { siteConfig } from "$lib/config/site.js";
@@ -37,7 +38,7 @@
 						<span class="sr-only">GitHub</span>
 					</div>
 				</a>
-				<a href={siteConfig.links.twitter} target="_blank" rel="noreferrer">
+				<!-- <a href={siteConfig.links.twitter} target="_blank" rel="noreferrer">
 					<div
 						class={cn(
 							buttonVariants({
@@ -50,9 +51,10 @@
 						<Icons.twitter class="h-3 w-3 fill-current" />
 						<span class="sr-only">X (formerly known as Twitter)</span>
 					</div>
-				</a>
+				</a> -->
 				<ModeToggle />
 				<LanguageSwitcher />
+				<UserNav />
 			</nav>
 		</div>
 	</div>
