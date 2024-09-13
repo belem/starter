@@ -5,9 +5,11 @@
 	import { Separator } from '$lib/components/ui/separator/index.js';
 	import * as Tabs from '$lib/components/ui/tabs/index.js';
 	import * as HoverCard from '$lib/components/ui/hover-card/index.js';
-	import * as ToggleGroup from '$lib/components/ui/toggle-group/index.js';
+	// import * as ToggleGroup from '$lib/components/ui/toggle-group/index.js';
 	import Label from '$lib/components/ui/label/label.svelte';
 	import { Switch } from '$lib/components/ui/switch/index.js';
+	import * as m from '$lib/paraglide/messages.js'
+	import { languageTag } from '$lib/paraglide/runtime.js'
 </script>
 
 <div class="flex h-full flex-col">
@@ -16,6 +18,9 @@
 	>
 		<h2 class="text-lg font-semibold">Mathematics - Basic Facts</h2>
 		<Button variant="secondary">Print</Button>
+		{languageTag()}
+		<h1>{m.hello_world()}</h1>
+		<p>{m.greetings({ name: "param" })}</p>
 	</div>
 	<Separator />
 	<Tabs.Root value="horizontal" class="flex-1">

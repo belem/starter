@@ -5,6 +5,7 @@
 		MainNav,
 		MobileNav,
 		ModeToggle,
+		LanguageSwitcher
 	} from "$lib/components/ui-enhanced/index.js";
 	import { buttonVariants } from "$lib/components/ui/button/index.js";
 	import { siteConfig } from "$lib/config/site.js";
@@ -51,6 +52,7 @@
 					</div>
 				</a>
 				<ModeToggle />
+				<LanguageSwitcher />
 			</nav>
 		</div>
 	</div>

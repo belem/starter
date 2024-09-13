@@ -1,0 +1,6 @@
+{
+    "$schema": "https://inlang.com/schema/inlang-message-format",
+    "lang": "简体中文",
+    "hello_world": "你好英语",
+	"greetings": "问候 {name}。"
+}

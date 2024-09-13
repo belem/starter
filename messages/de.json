@@ -1,0 +1,6 @@
+{
+    "$schema": "https://inlang.com/schema/inlang-message-format",
+    "lang": "Germany",
+    "hello_world": "Germany!",
+	"greetings": "Germany {name}."
+}

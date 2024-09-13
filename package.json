@@ -10,6 +10,8 @@
 		"format": "prettier --write ."
 	},
 	"devDependencies": {
+		"@inlang/paraglide-js": "1.11.2",
+		"@inlang/plugin-message-format": "^2.2.0",
 		"@sveltejs/adapter-auto": "^3.2.4",
 		"@sveltejs/kit": "^2.5.26",
 		"@sveltejs/vite-plugin-svelte": "^4.0.0-next.6",
@@ -20,6 +22,7 @@
 		"eslint": "^9.9.1",
 		"eslint-config-prettier": "^9.1.0",
 		"eslint-plugin-svelte": "^2.43.0",
+		"flag-icons": "^7.2.3",
 		"globals": "^15.9.0",
 		"lucide-svelte": "^0.438.0",
 		"mode-watcher": "^0.4.1",
@@ -34,6 +37,7 @@
 	},
 	"type": "module",
 	"dependencies": {
+		"@inlang/paraglide-sveltekit": "0.11.0",
 		"@internationalized/date": "^3.5.5",
 		"bits-ui": "^0.21.13",
 		"clsx": "^2.1.1",
