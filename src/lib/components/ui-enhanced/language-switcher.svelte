@@ -13,8 +13,6 @@
 	onMount(() => {
 		if (currentLanguage === 'en') {
 			flag = 'us';
-		} else if(currentLanguage === 'jp') {
-			flag = 'jp';
 		} else {
 			flag = currentLanguage;
 		}
