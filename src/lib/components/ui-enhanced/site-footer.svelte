@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { siteConfig } from "$lib/config/site.js";
+	import * as m from '$lib/paraglide/messages.js';
 </script>
 
 <footer class="py-6 md:px-8 md:py-0">
@@ -8,11 +8,11 @@
 			<p class="text-muted-foreground text-center text-sm leading-loose md:text-left">
 				&copy;2024
 				<a
-					href={siteConfig.url}
+					href="../"
 					rel="noreferrer"
 					class="font-medium underline underline-offset-4"
 				>
-					{siteConfig.name}</a
+					{m.title()}</a
 				>
 			</p>
 		</div>

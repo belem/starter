@@ -1,146 +1,155 @@
-<script>
-	let ranges = [10, 20, 50, 100, 1000, 10000];
-	let range = $state(ranges[0]);
-	let operations = ['Addition', 'Subtraction', 'Multiplication', 'Division'];
-	let operation = $state(operations[0]);
-
-	let questionCounts = [5, 10, 20, 50, 100];
-	let count = $state(questionCounts[2]);
-
-	let questionType = $state('calculation'); // 'fill-blank' or 'calculation'
-
-	// This will hold the generated math problems
-	let problems = $state([]);
-
-	// Function to generate/re-generate problems
-	const generateProblems = () => {
-		problems = [];
-		for (let i = 0; i < count; i++) {
-			let num1 = Math.floor(Math.random() * (range - 1)) + 1;
-			let num2 = Math.floor(Math.random() * (range - 1)) + 1;
-
-			let question;
-			switch (operation) {
-				case 'Addition':
-					question = `${num1} + ${num2} =`;
-					break;
-				case 'Subtraction':
-					question = `${num1} - ${num2} =`;
-					break;
-				case 'Multiplication':
-					question = `${num1} * ${num2} =`;
-					break;
-				case 'Division':
-					num2 = num2 === 0 ? 1 : num2; // Avoid divide by zero
-					question = `${num1} / ${num2} =`;
-					break;
-			}
-
-			// Generate question in the selected format
-			if (questionType === 'fill-blank') {
-				question = question.replace(/(\d+)/, '___');
-			}
-
-			document.startViewTransition(() => {
-				problems.push(question);
-			});
-		}
-	};
+<script lang="ts">
+	import CounterClockwiseClock from 'svelte-radix/CounterClockwiseClock.svelte';
+	import { Horizontal, Blank, Vertical } from '$lib/components/ui-enhanced/icons/math/facts/index';
+	import { NumberSelector, ProblemsSelector, RangeSelector } from './components/index';
+	import { Button } from '$lib/components/ui/button/index.js';
+	import { Separator } from '$lib/components/ui/separator/index.js';
+	import * as Tabs from '$lib/components/ui/tabs/index.js';
+	import * as HoverCard from '$lib/components/ui/hover-card/index.js';
+	import Label from '$lib/components/ui/label/label.svelte';
+	import { Switch } from '$lib/components/ui/switch/index.js';
+	import * as m from '$lib/paraglide/messages.js';
 </script>
 
-<div class="container py-4 px-0">
-<h1>Math Problem Generator</h1>
-
-<div>
-	<label>Operation:</label>
-	<select bind:value={operation}>
-		{#each operations as operation}
-			<option value={operation}>{operation}</option>
-		{/each}
-	</select>
+<div class="flex h-full flex-col">
+	<div
+		class="container flex flex-row items-center justify-between space-y-0 px-4 py-4 md:h-16 2xl:px-0"
+	>
+		<h2 class="text-lg font-semibold">{m.math_bf_title()}</h2>
+		<Button variant="secondary">{m.math_bf_print()}</Button>
+	</div>
+	<Separator />
+	<Tabs.Root value="horizontal" class="flex-1">
+		<div class="container h-full px-4 py-6 2xl:px-0">
+			<div class="grid h-full grid-rows-[300px_1fr] items-stretch gap-6 md:grid-cols-[200px_1fr]">
+				<div class="flex flex-col space-y-4 md:order-1">
+					<ProblemsSelector />
+					<div class="grid gap-2">
+						<HoverCard.Root openDelay={200}>
+							<HoverCard.Trigger asChild let:builder>
+								<span
+									class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+									use:builder.action
+									{...builder}
+								>
+									{m.math_bf_sb_o2_title()}
+								</span>
+							</HoverCard.Trigger>
+							<HoverCard.Content class="w-[240px] text-sm" side="left">
+								{m.math_bf_sb_o2_hover()}
+							</HoverCard.Content>
+						</HoverCard.Root>
+						<Tabs.List class="grid grid-cols-3">
+							<Tabs.Trigger value="horizontal">
+								<HoverCard.Root>
+									<HoverCard.Trigger>
+										<span class="sr-only">{m.math_bf_sb_o2_h()}</span>
+										<Horizontal />
+									</HoverCard.Trigger>
+									<HoverCard.Content class="w-[160px] text-sm">
+										{m.math_bf_sb_o2_h()}
+									</HoverCard.Content>
+								</HoverCard.Root>
+							</Tabs.Trigger>
+							<Tabs.Trigger value="blank">
+								<HoverCard.Root>
+									<HoverCard.Trigger>
+										<span class="sr-only">{m.math_bf_sb_o2_b()}</span>
+										<Blank />
+									</HoverCard.Trigger>
+									<HoverCard.Content class="w-[160px] text-sm">
+										{m.math_bf_sb_o2_b()}
+									</HoverCard.Content>
+								</HoverCard.Root>
+							</Tabs.Trigger>
+							<Tabs.Trigger value="vertical">
+								<HoverCard.Root>
+									<HoverCard.Trigger>
+										<span class="sr-only">{m.math_bf_sb_o2_v()}</span>
+										<Vertical />
+									</HoverCard.Trigger>
+									<HoverCard.Content class="w-[160px] text-sm">
+										{m.math_bf_sb_o2_v()}
+									</HoverCard.Content>
+								</HoverCard.Root>
+							</Tabs.Trigger>
+						</Tabs.List>
+					</div>
+					<NumberSelector value={[20]} />
+					<RangeSelector />
+					<!-- <Label for="number">Options</Label>
+					<ToggleGroup.Root type="multiple">
+						<ToggleGroup.Item value="carry" aria-label="Toggle carry" class="align-center px-4 py-2">
+							<div>Carry</div>
+						</ToggleGroup.Item>
+						<ToggleGroup.Item value="borrow" aria-label="Toggle borrow" class="align-center px-4 py-2">
+							<div>Borrow</div>
+						</ToggleGroup.Item>
+					</ToggleGroup.Root> -->
+					<div class="flex items-center justify-between">
+						<HoverCard.Root>
+							<HoverCard.Trigger>
+								<div class="flex items-center space-x-1">
+									<Label for="carry">{m.math_bf_sb_o5_title()}</Label>
+									<Switch id="carry" />
+								</div>
+							</HoverCard.Trigger>
+							<HoverCard.Content>
+								{m.math_bf_sb_o5_hover()}
+							</HoverCard.Content>
+						</HoverCard.Root>
+						<HoverCard.Root>
+							<HoverCard.Trigger>
+								<div class="flex items-center space-x-1">
+									<Label for="borrow">{m.math_bf_sb_o6_title()}</Label>
+									<Switch id="borrow" />
+								</div>
+							</HoverCard.Trigger>
+							<HoverCard.Content>
+								{m.math_bf_sb_o6_hover()}
+							</HoverCard.Content>
+						</HoverCard.Root>
+					</div>
+				</div>
+				<div class="mt-4 md:mt-0 md:order-2">
+					<Tabs.Content value="horizontal" class="mt-0 border-0 p-0">
+						<div class="flex h-full flex-col space-y-4">
+							<div class="min-h-80 flex-1 rounded-md border p-4"></div>
+							<div class="flex items-center space-x-2">
+								<Button>Generate</Button>
+								<Button variant="secondary">
+									<span class="sr-only">Show history</span>
+									<CounterClockwiseClock class="h-4 w-4" />
+								</Button>
+							</div>
+						</div>
+					</Tabs.Content>
+					<Tabs.Content value="blank" class="mt-0 border-0 p-0">
+						<div class="flex h-full flex-col space-y-4">
+							<div class="min-h-80 flex-1 rounded-md border p-4">B</div>
+							<div class="flex items-center space-x-2">
+								<Button>Generate</Button>
+								<Button variant="secondary">
+									<span class="sr-only">Show history</span>
+									<CounterClockwiseClock class="h-4 w-4" />
+								</Button>
+							</div>
+						</div>
+					</Tabs.Content>
+					<Tabs.Content value="vertical" class="mt-0 border-0 p-0">
+						<div class="flex h-full flex-col space-y-4">
+							<div class="min-h-80 flex-1 rounded-md border p-4">V</div>
+							<div class="flex items-center space-x-2">
+								<Button>Generate</Button>
+								<Button variant="secondary">
+									<span class="sr-only">Show history</span>
+									<CounterClockwiseClock class="h-4 w-4" />
+								</Button>
+							</div>
+						</div>
+					</Tabs.Content>
+				</div>
+			</div>
+		</div>
+	</Tabs.Root>
 </div>
-
-<div>
-	<label>Range:</label>
-	<select bind:value={range}>
-		{#each ranges as range}
-			<option value={range}>{range}</option>
-		{/each}
-	</select>
-</div>
-
-<div>
-	<label>Number of Questions:</label>
-	<select bind:value={count}>
-		{#each questionCounts as count}
-			<option value={count}>{count}</option>
-		{/each}
-	</select>
-</div>
-
-<div>
-	<label>Question Type:</label>
-	<select bind:value={questionType}>
-		<option value="calculation">Horizontal Form</option>
-		<option value="fill-blank">Fill in the Blank</option>
-		<option value="">Vertical Form</option>
-	</select>
-</div>
-
-<button type="submit" onclick={generateProblems}>Generate/Re-generate Mental Math Problems</button>
-
-<!-- List of generated problems -->
-<div id="print">
-	{#each problems as problem}
-		<div>{problem}</div>
-	{/each}
-</div>
-
-<!-- Button to trigger printing -->
-<button onclick={() => window.print()}>Print</button>
-
-</div>
-<style>
-	::view-transition-old(slide) {
-		animation:
-			var(--animation-fade-out) forwards,
-			var(--animation-slide-out-up) forwards;
-		animation-duration: 0.3s;
-		animation-timing-function: var(--ease-elastic-in-out-3);
-	}
-
-	/* animate entrance */
-	::view-transition-new(slide) {
-		opacity: 0;
-		animation:
-			var(--animation-fade-in) forwards,
-			var(--animation-slide-in-up) forwards;
-		animation-duration: 0.3s;
-		animation-delay: 0.1s;
-		animation-timing-function: var(--ease-elastic-in-out-3);
-	}
-
-	#print {
-		display: grid;
-		grid-template-columns: repeat(2, 1fr);
-		grid-column-gap: 10px;
-		grid-row-gap: 4px;
-		align-items: start;
-    view-transition-name: slide;
-		font-variant-numeric: tabular-nums;
-	}
-
-	@media print {
-		#print {
-			background-color: white;
-			height: 100%;
-			width: 100%;
-			position: fixed;
-			top: 0;
-			left: 0;
-			margin: 0;
-			padding: 30px;
-			font-size: 22px;
-		}
-	}
-</style>
