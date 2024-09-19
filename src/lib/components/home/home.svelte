@@ -12,7 +12,7 @@
 		<div class="flex text-5xl md:text-6xl gap-x-1 md:gap-x-3 mt-4 items-center">
 			<Logo class="h-10 w-10 md:h-12 md:w-12" /> {m.title()}
 		</div>
-		<div class="text-lg md:text-2xl text-gray-400 mb-4">
+		<div class="text-lg md:text-2xl text-gray-400 my-4">
 			{m.description()}
 		</div>
 		<section class="flex w-full items-center justify-center space-x-4 py-4 md:pb-10">

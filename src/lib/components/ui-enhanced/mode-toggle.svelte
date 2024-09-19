@@ -5,6 +5,7 @@
 	import { resetMode, setMode } from "mode-watcher";
 	import { Button } from "$lib/components/ui/button/index.js";
 	import * as DropdownMenu from "$lib/components/ui/dropdown-menu/index.js";
+	import * as m from '$lib/paraglide/messages.js';
 </script>
 
 <DropdownMenu.Root>
@@ -20,9 +21,9 @@
 		</Button>
 	</DropdownMenu.Trigger>
 	<DropdownMenu.Content align="end">
-		<DropdownMenu.Item on:click={() => setMode("light")}><Sun class="dark:-roate-90 h-[1.0rem] w-[1.0rem] rotate-0 scale-100 transition-all mr-1" /> Light</DropdownMenu.Item>
-		<DropdownMenu.Item on:click={() => setMode("dark")}><Moon class="h-[1.0rem] w-[1.0rem] rotate-0 scale-100 transition-all dark:rotate-0 mr-1" /> Dark</DropdownMenu.Item>
+		<DropdownMenu.Item on:click={() => setMode("light")}><Sun class="dark:-roate-90 h-[1.0rem] w-[1.0rem] rotate-0 scale-100 transition-all mr-1" /> {m.nav_theme_light()}</DropdownMenu.Item>
+		<DropdownMenu.Item on:click={() => setMode("dark")}><Moon class="h-[1.0rem] w-[1.0rem] rotate-0 scale-100 transition-all dark:rotate-0 mr-1" /> {m.nav_theme_dark()}</DropdownMenu.Item>
 		<DropdownMenu.Item on:click={() => resetMode()}>
-			<AutoTheme class="mr-1 h-[1.0rem] w-[1.0rem]" />System</DropdownMenu.Item>
+			<AutoTheme class="mr-1 h-[1.0rem] w-[1.0rem]" />{m.nav_theme_system()}</DropdownMenu.Item>
 	</DropdownMenu.Content>
 </DropdownMenu.Root>

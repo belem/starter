@@ -11,10 +11,10 @@
 	import { Switch } from '$lib/components/ui/switch/index.js';
 	import * as m from '$lib/paraglide/messages.js';
 
-	let type = $state('');
+	let type = $state('horizontal');
  
 	const config = $derived({
-		fact: 'add',
+		fact: "add",
 		number: 20,
 		range: 10,
 		type: type,
@@ -23,7 +23,7 @@
 	});
 
 	onMount(()=> {
-		type = 'horizontal';
+	 
 	})
 
 </script>
@@ -33,13 +33,16 @@
 		class="container flex flex-row items-center justify-between space-y-0 px-4 py-4 md:h-16 2xl:px-0"
 	>
 		<h2 class="text-lg font-semibold">{m.math_bf_title()}</h2>
-		{type} 
-		<Button variant="secondary">{m.math_bf_print()}</Button>
+		<div>
+			<Button variant="secondary">{m.math_bf_print()}</Button>
+			<Button variant="secondary" class="ml-2">{m.math_bf_pdf()}</Button>
+			<Button variant="secondary" class="ml-2">{m.math_bf_pdf_answer()}</Button>
+		</div>
 	</div>
 	<Separator />
 	<div class="container h-full px-4 py-6 2xl:px-0">
 		<Tabs.Root bind:value={type} >
-				<div class="grid h-full grid-rows-[300px_1fr] items-stretch gap-6 md:grid-cols-[200px_1fr]">
+				<div class="grid h-full grid-rows-[360px_1fr] md:grid-rows-1 items-stretch gap-6 md:grid-cols-[200px_1fr]">
 					<div class="flex flex-col space-y-4 md:order-1">
 						<ProblemsSelector />
 						<div class="grid gap-2">
@@ -139,20 +142,17 @@
 					<div class="mt-4 md:mt-0 md:order-2">
 						<Tabs.Content value="horizontal" class="mt-0 border-0 p-0">
 							<div class="flex h-full flex-col space-y-4">
-								<div class="min-h-80 flex-1 rounded-md border p-4">H {
-								JSON.stringify(config)}</div>
+								<div class="min-h-80 flex-1 rounded-md border p-4">H</div>
 							</div>
 						</Tabs.Content>
 						<Tabs.Content value="blank" class="mt-0 border-0 p-0">
 							<div class="flex h-full flex-col space-y-4">
-								<div class="min-h-80 flex-1 rounded-md border p-4">B {
-								JSON.stringify(config)}</div>
+								<div class="min-h-80 flex-1 rounded-md border p-4">B </div>
 							</div>
 						</Tabs.Content>
 						<Tabs.Content value="vertical" class="mt-0 border-0 p-0">
 							<div class="flex h-full flex-col space-y-4">
-								<div class="min-h-80 flex-1 rounded-md border p-4">V {
-								JSON.stringify(config)}</div>
+								<div class="min-h-80 flex-1 rounded-md border p-4">V </div>
 							</div>
 						</Tabs.Content>
 					</div>
@@ -160,3 +160,8 @@
 		</Tabs.Root>
 	</div>
 </div>
+
+{ config.fact }
+{ config.number }
+{ config.range }
+{ config.type }

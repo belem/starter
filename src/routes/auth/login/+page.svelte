@@ -4,7 +4,7 @@
 </script>
 
 <div
-	class="container relative portrait:h-full landscape:h-[500px] flex-col items-center justify-center grid lg:max-w-none lg:grid-cols-2 lg:px-0"
+	class="container relative portrait:h-full flex-col items-center justify-center grid lg:max-w-none lg:grid-cols-2 lg:px-0"
 >
 	<div class="bg-muted relative hidden h-full flex-col p-10 text-white lg:flex dark:border-r">
 		<div
@@ -27,7 +27,7 @@
 		</div>
 	</div>
 	<div class="lg:p-8 sd:grid">
-		<div class="mx-auto flex w-full flex-col justify-center space-y-6 sm:w-[350px]">
+		<div class="mx-auto flex portrait:my-20 landscape:mt-8 w-full flex-col justify-center space-y-6 sm:w-[350px]">
 			<div class="flex flex-col space-y-2 text-center">
 				<h1 class="text-2xl font-semibold tracking-tight">Create an account</h1>
 				<p class="text-muted-foreground text-sm">
