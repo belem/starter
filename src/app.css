@@ -56,8 +56,6 @@
 @layer base {
 	* {
 		@apply border-border;
-		font-family: 'LXGW WenKai';
-		font-weight: 700;
 	}
 
 	body {
