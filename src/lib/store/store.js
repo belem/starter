@@ -12,17 +12,7 @@ import { persisted } from 'svelte-persisted-store';
 
 // Worksheet - Type
 // 0 horizontal
-// 1 Blank
-// 3 Vertical
+// 1 blank
+// 2 vertical
 
-export const mathWorksheetStore = persisted('mathWorksheetStore', {
-  config: {
-    fact: 0,
-    number: 20,
-    range: 10,
-    type: 0,
-    carrying: false,
-    borrowing: false
-  },
-  worksheet: {}
-});
+export const mathWorksheetStore = persisted('mathWorksheetStore', {});

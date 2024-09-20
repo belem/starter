@@ -11,7 +11,7 @@
     "math_bf_title": "Mathe Arbeitsblätter",
     "math_bf_print": "Drucken",
     "math_bf_pdf": "PDF",
-    "math_bf_pdf_answer": "PDF mit Antworten",
+    "math_bf_pdf_answer": "PDF · Antworten",
     "math_bf_sb_o1_title": "Mathematische Grundlagen",
     "math_bf_sb_o1_add": "Additionsfähigkeiten",
     "math_bf_sb_o1_sub": "Subtraktionsfähigkeiten",
@@ -41,5 +41,6 @@
     "math_bf_sb_o5_title": "Übertrag",
     "math_bf_sb_o5_hover": "Beim Addieren wird der Übertrag von einer Spalte zur nächsten übertragen",
     "math_bf_sb_o6_title": "Entleihen",
-    "math_bf_sb_o6_hover": "Entleihen (Umgruppieren), beim Subtrahieren wird ein Wert von der nächsten Spalte links entliehen"
+    "math_bf_sb_o6_hover": "Entleihen (Umgruppieren), beim Subtrahieren wird ein Wert von der nächsten Spalte links entliehen",
+    "math_bf_btn_generate": "Erzeugen"
 }

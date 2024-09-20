@@ -20,45 +20,62 @@
 
   const mathRanges = [
    {
+    id: 10,
     value: "range_10",
     label: math_bf_sb_o4_10
    },
    {
+    id: 20,
     value: "range_20",
     label: math_bf_sb_o4_20
    },
    {
+    id: 50,
     value: "range_50",
     label: math_bf_sb_o4_50
    },
    {
+    id: 100,
     value: "range_100",
     label: math_bf_sb_o4_100
    },
    {
+    id: 1000,
     value: "range_1000",
     label: math_bf_sb_o4_1000
    },
    {
+    id: 10000,
     value: "range_10000",
     label: math_bf_sb_o4_10000
    },
    {
+    id: 100000,
     value: "range_100000",
     label: math_bf_sb_o4_100000
    },
    {
+    id: 1000000,
     value: "range_1000000",
     label: math_bf_sb_o4_1000000
    }
   ];
   
-  let open = false;
-  let value = "";
-  
-  $: selectedValue =
-   mathRanges.find((f) => f.value === value)?.label ?? math_bf_sb_o4_20;
-  
+  let open = $state(false);
+  let value = $state("");
+
+  let selectedValue = $derived.by(()=> {
+    return mathRanges.find((f) => f.value === value)?.label ?? math_bf_sb_o4_20;
+  });
+
+  let selectedId = $derived.by(()=> {
+    return mathRanges.find((f) => f.value === value)?.id ?? 20;
+  });
+
+  export function getSelectedRange() {
+		return selectedId;
+	}
+
   // We want to refocus the trigger button when the user selects
   // an item from the list so users can continue navigating the
   // rest of the form with the keyboard.

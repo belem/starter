@@ -5,7 +5,13 @@
 	import { Slider } from "$lib/components/ui/slider/index.js";
 	import * as m from '$lib/paraglide/messages.js';
 
-	export let value: SliderPrimitive.Props["value"];
+	let value: SliderPrimitive.Props["value"];
+
+	function getSelectedNumber() {
+		return value;
+	}
+
+	export { value, getSelectedNumber };
 </script>
 
 <div class="grid gap-2">

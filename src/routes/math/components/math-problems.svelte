@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { mathWorksheetStore } from '$lib/store/store';
   import Check from "lucide-svelte/icons/check";
   import ChevronsUpDown from "lucide-svelte/icons/chevrons-up-down";
   import { tick } from "svelte";
@@ -8,6 +9,15 @@
   import Label from "$lib/components/ui/label/label.svelte";
   import { cn } from "$lib/utils.js";
   import * as m from '$lib/paraglide/messages.js';
+
+  let mathWorksheet;
+	mathWorksheetStore.subscribe((value) => {
+		mathWorksheet = value;
+	});
+
+	const updateMathWorksheet = (value) => {
+		mathWorksheetStore.update(() => value);
+	};
   
   const o1Add = m.math_bf_sb_o1_add();
   const o1Sub = m.math_bf_sb_o1_sub();
@@ -20,43 +30,62 @@
 
   const mathFacts = [
    {
+    id: 0,
     value: "add",
     label: o1Add
    },
    {
+    id: 1,
     value: "sub",
     label: o1Sub
    },
    {
+    id: 2,
     value: "mul",
     label: o1Mul
    },
    {
+    id: 3,
     value: "div",
     label: o1Div
    },
    {
+    id: 4,
     value: "addsub",
     label: o1AddSub
    },
    {
+    id: 5,
     value: "addmul",
     label: o1AddMul
    },
    {
+    id: 6,
     value: "muldiv",
     label: o1MulDiv
    },
    {
+    id: 7,
     value: "all",
     label: o1All
    }
   ];
   
-  let open = false;
-  let value = "";
+  let open = $state(false);
+  let value = $state("");
   
-  $: selectedValue = mathFacts.find((f) => f.value === value)?.label ?? o1Add;
+  let selectedValue = $derived.by(()=> {
+    return mathFacts.find((f) => f.value === value)?.label ?? o1Add;
+  });
+
+  let selectedId = $derived.by(()=> {
+    return mathFacts.find((f) => f.value === value)?.id ?? 0;
+  });
+
+  $effect(() => {
+		mathWorksheet.config.fact = selectedId;
+		updateMathWorksheet(mathWorksheet);
+	});
 
   // We want to refocus the trigger button when the user selects
   // an item from the list so users can continue navigating the

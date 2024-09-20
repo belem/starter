@@ -11,7 +11,7 @@
     "math_bf_title": "Math Worksheet",
     "math_bf_print": "Print",
     "math_bf_pdf": "PDF",
-    "math_bf_pdf_answer": "PDF with Answers",
+    "math_bf_pdf_answer": "PDF · Answers",
     "math_bf_sb_o1_title": "Basic Math Facts",
     "math_bf_sb_o1_add": "Addition Skills",
     "math_bf_sb_o1_sub": "Subtraction Skills",
@@ -41,5 +41,6 @@
     "math_bf_sb_o5_title": "Carrying",
     "math_bf_sb_o5_hover": "Used in addition, carrying involves moving an extra value from one column to the next",
     "math_bf_sb_o6_title": "Borrowing",
-    "math_bf_sb_o6_hover": "Borrowing (Regrouping), used in subtraction, borrowing involves taking a value from the next column to the left"
+    "math_bf_sb_o6_hover": "Borrowing (Regrouping), used in subtraction, borrowing involves taking a value from the next column to the left",
+    "math_bf_btn_generate": "Generate"
 }

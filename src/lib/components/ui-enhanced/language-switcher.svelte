@@ -9,7 +9,6 @@
 
 	let currentLanguage = $state(languageTag());
 	let flag = $state('us');
-	console.log(currentLanguage)
 	onMount(() => {
 		if (currentLanguage === 'en') {
 			flag = 'us';
