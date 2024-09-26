@@ -53,7 +53,7 @@
 
 	const randomBoolean = () => {
 		return Math.random() < 0.5;
-	}
+	};
 
 	$effect(() => {
 		// mathWorksheet.config.fact = factSelector?.getSelectedFactId();
@@ -229,7 +229,7 @@
 				b = randomNumExcluding(range - 1, [0, 1]); // Exclude 0 and 1 for b
 				const multiplier = randomNumExcluding(Math.floor(range / b), [0]); // Ensure multiplier is not zero
 				a = b * multiplier; // Make sure a is a multiple of b
-			} while (!ensureResultInRange(a, b, 'div'));
+			} while (!ensureResultInRange(a, b, 'div') || a === b);
 
 			const c = a / b;
 			obj.a = a;
@@ -299,13 +299,13 @@
 		let number = numberSelector?.getSelectedNumber()[0];
 		let range = rangeSelector?.getSelectedRange();
 		blackWidth = 'w-4';
-		if (range <=10) {
+		if (range <= 10) {
 			blackWidth = 'w-4';
-		} else if (range > 10 && range <=100) {
+		} else if (range > 10 && range <= 100) {
 			blackWidth = 'w-6';
-		} else if (range > 100 && range <=1000) {
+		} else if (range > 100 && range <= 1000) {
 			blackWidth = 'w-8';
-		} else if (range > 1000 && range <=10000) {
+		} else if (range > 1000 && range <= 10000) {
 			blackWidth = 'w-10';
 		} else {
 			blackWidth = 'w-12';
@@ -478,27 +478,29 @@
 												{#if randomBoolean()}
 													{a}
 													{#if o === '*'}
-													×
-												{:else if o === '/'}
-													÷
+														×
+													{:else if o === '/'}
+														÷
+													{:else}
+														{o}
+													{/if}
+													<div
+														class="{blackWidth} mx-2 h-4 border-b border-solid border-gray-200"
+													></div>
 												{:else}
-													{o}
-												{/if}
-												<div class="{blackWidth} h-4 border-solid border-b border-gray-200 mx-2">
-
-												</div>
-												{:else}
-												<div class="{blackWidth} h-4 border-solid border-b border-gray-200 mr-2"></div>
+													<div
+														class="{blackWidth} mr-2 h-4 border-b border-solid border-gray-200"
+													></div>
 													{#if o === '*'}
-													×
-												{:else if o === '/'}
-													÷
-												{:else}
-													{o}
+														×
+													{:else if o === '/'}
+														÷
+													{:else}
+														{o}
+													{/if}
+													{b}
 												{/if}
-												{b}
-												{/if}
-												 = {c}
+												= {c}
 											</div>
 										{/each}
 									</div>
