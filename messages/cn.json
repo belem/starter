@@ -38,9 +38,9 @@
     "math_bf_sb_o4_10000": "4 位数",
     "math_bf_sb_o4_100000": "5 位数",
     "math_bf_sb_o4_1000000": "6 位数",
-    "math_bf_sb_o5_title": "可进位",
+    "math_bf_sb_o5_title": "进位",
     "math_bf_sb_o5_hover": "某两数或多数的某一位，经计算后产生一个数字，会影响此位左侧高一位的计算结果。",
-    "math_bf_sb_o6_title": "可退位",
-    "math_bf_sb_o6_hover": "可退位（可借位），当两个数相减，被减数的个位不够减时，往前一位借位，相当于给这位数加上10，再进行计算。",
+    "math_bf_sb_o6_title": "退位",
+    "math_bf_sb_o6_hover": "退位（借位），当两个数相减，被减数的个位不够减时，往前一位借位，相当于给这位数加上10，再进行计算。",
     "math_bf_btn_generate": "生成习题"
 }

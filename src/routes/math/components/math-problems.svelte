@@ -1,5 +1,4 @@
 <script lang="ts">
-  import { mathWorksheetStore } from '$lib/store/store';
   import Check from "lucide-svelte/icons/check";
   import ChevronsUpDown from "lucide-svelte/icons/chevrons-up-down";
   import { tick } from "svelte";
@@ -10,14 +9,14 @@
   import { cn } from "$lib/utils.js";
   import * as m from '$lib/paraglide/messages.js';
 
-  let mathWorksheet;
-	mathWorksheetStore.subscribe((value) => {
-		mathWorksheet = value;
-	});
+  // let mathWorksheet;
+	// mathWorksheetStore.subscribe((value) => {
+	// 	mathWorksheet = value;
+	// });
 
-	const updateMathWorksheet = (value) => {
-		mathWorksheetStore.update(() => value);
-	};
+	// const updateMathWorksheet = (value) => {
+	// 	mathWorksheetStore.update(() => value);
+	// };
   
   const o1Add = m.math_bf_sb_o1_add();
   const o1Sub = m.math_bf_sb_o1_sub();
@@ -82,10 +81,14 @@
     return mathFacts.find((f) => f.value === value)?.id ?? 0;
   });
 
-  $effect(() => {
-		mathWorksheet.config.fact = selectedId;
-		updateMathWorksheet(mathWorksheet);
-	});
+  // $effect(() => {
+	// 	mathWorksheet.config.fact = selectedId;
+	// 	updateMathWorksheet(mathWorksheet);
+	// });
+
+  export function getSelectedFactId() {
+		return selectedId;
+	}
 
   // We want to refocus the trigger button when the user selects
   // an item from the list so users can continue navigating the
