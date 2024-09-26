@@ -441,11 +441,11 @@
 				<div class="mt-4 md:order-2 md:mt-0">
 					<Tabs.Content value="horizontal" class="mt-0 border-0 p-0">
 						<div class="flex h-full flex-col space-y-4">
-							<div class="min-h-80 flex-1 rounded-md border p-8">
+							<div class="min-h-80 flex-1 rounded-md border p-0 md:p-8">
 								{#if mathWorksheet?.worksheet?.length > 0}
-									<div class="flex flex-wrap px-8">
+									<div class="flex flex-wrap px-2 md:px-8">
 										{#each mathWorksheet?.worksheet as { a, b, c, o }, i}
-											<div class="mt-2 flex w-1/2 flex-shrink-0 items-center text-lg">
+											<div class="mt-2 flex w-1/2 flex-shrink-0 items-center text-xs md:text-lg">
 												<div class="mr-4 text-sm text-gray-200">
 													{#if i < 9}0{/if}{i + 1}.
 												</div>
@@ -467,11 +467,11 @@
 					</Tabs.Content>
 					<Tabs.Content value="blank" class="mt-0 border-0 p-0">
 						<div class="flex h-full flex-col space-y-4">
-							<div class="min-h-80 flex-1 rounded-md border p-8">
+							<div class="min-h-80 flex-1 rounded-md border p-0 md:p-8">
 								{#if mathWorksheet?.worksheet?.length > 0}
-									<div class="flex flex-wrap px-8">
+									<div class="flex flex-wrap px-2 md:px-8">
 										{#each mathWorksheet?.worksheet as { a, b, c, o }, i}
-											<div class="mt-2 flex w-1/2 flex-shrink-0 items-center text-lg">
+											<div class="mt-2 flex w-1/2 flex-shrink-0 items-center text-xs md:text-lg">
 												<div class="mr-4 text-sm text-gray-200">
 													{#if i < 9}0{/if}{i + 1}.
 												</div>
@@ -510,16 +510,16 @@
 					</Tabs.Content>
 					<Tabs.Content value="vertical" class="mt-0 border-0 p-0">
 						<div class="flex h-full flex-col space-y-4">
-							<div class="min-h-80 flex-1 rounded-md border p-8">
+							<div class="min-h-80 flex-1 rounded-md border p-0 md:p-8">
 								{#if mathWorksheet?.worksheet?.length > 0}
-									<div class="flex flex-wrap px-8">
+									<div class="flex flex-wrap px-2 md:px-8">
 										{#each mathWorksheet?.worksheet as { a, b, c, o }, i}
-											<div class="mb-1.6 flex w-1/5 text-lg">
-												<div class="text-sm text-gray-200">
+											<div class="mt-4 md:mt-0 mb-0 md:mb-1.6 flex w-1/5 text-xs md:text-lg">
+												<div class="text-xs md:text-sm text-gray-200">
 													{#if i < 9}0{/if}{i + 1}.
 												</div>
-												<div class="mx-4 mb-8 flex-1 pr-4 text-right">
-													<div class="mr-9 flex flex-col">
+												<div class="mx-1 md:mx-4 mb:2 md:mb-8 flex-1 pr-4 text-right">
+													<div class="mr-1 md:mr-9 flex flex-col">
 														<div class="flex">
 															<div class="flex-1"></div>
 															<div class="flex-1">{a}</div>
@@ -537,7 +537,7 @@
 															<div class="flex-1">{b}</div>
 														</div>
 													</div>
-													<div class="border-cool-gray-800 border-t"></div>
+													<div class="border-black border-t mt-1"></div>
 													<div class="mr-9 flex">
 														<div class="flex-1"></div>
 														<div class="flex-1">&nbsp;</div>
