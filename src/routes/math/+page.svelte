@@ -20,6 +20,10 @@
 		return Object.entries(types).find(([key, val]) => val === value)?.[0];
 	};
 
+	const print = () => {
+		window.print();
+	}
+
 	let factSelector, numberSelector, rangeSelector;
 
 	let mathWorksheet = $state({});
@@ -324,12 +328,12 @@
 </script>
 
 <div class="flex h-full flex-col">
-	<div
-		class="container flex flex-col items-center justify-between space-y-0 px-4 py-4 md:h-16 md:flex-row 2xl:px-0"
+	<div id="sub-nav"
+		class=" container flex flex-col items-center justify-between space-y-0 px-4 py-4 md:h-16 md:flex-row 2xl:px-0"
 	>
 		<h2 class="text-lg font-semibold">{m.math_bf_title()}</h2>
 		<div class="space-y-2 md:space-y-0">
-			<Button variant="secondary"><Print class="mr-1 h-4" /> {m.math_bf_print()}</Button>
+			<Button variant="secondary" on:click={print}><Print class="mr-1 h-4" /> {m.math_bf_print()}</Button>
 			<Button variant="secondary" class="ml-2"><PDF class="mr-1 h-4" /> {m.math_bf_pdf()}</Button>
 			<Button variant="secondary" class="ml-2"
 				><PDF class="mr-1 h-4" /> {m.math_bf_pdf_answer()}</Button
@@ -342,7 +346,7 @@
 			<div
 				class="grid h-full grid-rows-[360px_1fr] items-stretch gap-6 md:grid-cols-[200px_1fr] md:grid-rows-1"
 			>
-				<div class="flex flex-col space-y-4 md:order-1">
+				<div id="action-bar" class="flex flex-col space-y-4 md:order-1">
 					<ProblemsSelector bind:this={factSelector} />
 					<div class="grid gap-2">
 						<HoverCard.Root openDelay={200}>
@@ -438,10 +442,10 @@
 						</Button>
 					</div>
 				</div>
-				<div class="mt-4 md:order-2 md:mt-0">
-					<Tabs.Content value="horizontal" class="mt-0 border-0 p-0">
+				<div class="mt-4 md:order-2 md:mt-0 {type}">
+					<Tabs.Content value="horizontal" class="mt-0 border-0 p-0" id="horizontal">
 						<div class="flex h-full flex-col space-y-4">
-							<div class="min-h-80 flex-1 rounded-md border p-0 md:p-8">
+							<div class="min-h-80 flex-1 rounded-md border p-0 md:p-8 sheet">
 								{#if mathWorksheet?.worksheet?.length > 0}
 									<div class="flex flex-wrap px-2 md:px-8">
 										{#each mathWorksheet?.worksheet as { a, b, c, o }, i}
@@ -465,9 +469,9 @@
 							</div>
 						</div>
 					</Tabs.Content>
-					<Tabs.Content value="blank" class="mt-0 border-0 p-0">
+					<Tabs.Content value="blank" class="mt-0 border-0 p-0" id="blank">
 						<div class="flex h-full flex-col space-y-4">
-							<div class="min-h-80 flex-1 rounded-md border p-0 md:p-8">
+							<div class="min-h-80 flex-1 rounded-md border p-0 md:p-8 sheet">
 								{#if mathWorksheet?.worksheet?.length > 0}
 									<div class="flex flex-wrap px-2 md:px-8">
 										{#each mathWorksheet?.worksheet as { a, b, c, o }, i}
@@ -508,9 +512,9 @@
 							</div>
 						</div>
 					</Tabs.Content>
-					<Tabs.Content value="vertical" class="mt-0 border-0 p-0">
+					<Tabs.Content value="vertical" class="mt-0 border-0 p-0" id="vertical">
 						<div class="flex h-full flex-col space-y-4">
-							<div class="min-h-80 flex-1 rounded-md border p-0 md:p-8">
+							<div class="min-h-80 flex-1 rounded-md border p-0 md:p-8 sheet">
 								{#if mathWorksheet?.worksheet?.length > 0}
 									<div class="flex flex-wrap px-2 md:px-8">
 										{#each mathWorksheet?.worksheet as { a, b, c, o }, i}
@@ -564,4 +568,11 @@
 			{mathWorksheet.config.borrowing}
 		{/if}
 	</div> -->
+	<div id="qr">
+		<img src="../qrcode.png" alt="QR code">
+		<div>
+			{m.description()}<br/>
+			https://kuibu.app
+		</div>
+	</div>
 </div>

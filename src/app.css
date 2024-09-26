@@ -62,3 +62,46 @@
 		@apply bg-background text-foreground;
 	}
 }
+
+#qr {
+	display: none;
+}
+
+@media print {
+	header, footer {
+		display: none !important;
+	}
+
+	#sub-nav, #action-bar {
+		display: none;
+	}
+
+	#horizontal, #blank, #vertical {
+		display: none;
+	}
+
+	.horizontal #horizontal, .blank #blank, .vertical #vertical {
+		display: block !important;
+	}
+
+	.horizontal .sheet, .blank .sheet, .vertical .sheet {
+		border: 0px solid white !important;
+	}
+
+	#qr {
+		display: flex !important;
+		flex-direction: row;
+		align-items: flex-end;
+		font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+		font-size: 10px;
+	}
+	
+	#qr img {
+		max-width: 120px;
+		margin: 0 4px 0 10px;
+	}
+	
+	#qr div {
+		padding: 0 10px 10px 0;
+	}
+}
