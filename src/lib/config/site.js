@@ -3,6 +3,8 @@ import * as m from '$lib/paraglide/messages.js';
 const siteTitle = m.title();
 const siteDescription = m.description();
 const navMath = m.nav_math();
+const game =  m.game_game();
+const navSchulte = m.game_schulte();
 
 export const siteConfig = {
 	name: siteTitle,
@@ -18,6 +20,10 @@ export const siteConfig = {
     {
       title: navMath,
       href: "/math"
+    },
+		{
+      title: navSchulte,
+      href: "/schulte"
     }
   ],
   sidebarNav: [
@@ -27,6 +33,16 @@ export const siteConfig = {
 				{
 					title: navMath,
 					href: "/math",
+					items: [],
+				}
+			]
+		},
+		{
+			title: game,
+			items: [
+				{
+					title: navSchulte,
+					href: "/schulte",
 					items: [],
 				}
 			]

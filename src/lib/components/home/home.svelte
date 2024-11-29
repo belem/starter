@@ -16,8 +16,9 @@
 			{m.description()}
 		</div>
 		<section class="flex w-full items-center justify-center space-x-4 py-4 md:pb-10">
-			<Button href="/math" class="rounded-[6px]">{m.math_bf_title()}</Button>
-			<Button href="/auth/login" variant="outline" class="rounded-[6px]">{m.user_login()}</Button>
+			<Button href="/math" variant="outline" class="rounded-[6px]">{m.math_bf_title()}</Button>
+			<Button href="/schulte" class="rounded-[6px]">{m.schulte()}</Button>
+			<!-- <Button href="/auth/login" variant="outline" class="rounded-[6px]">{m.user_login()}</Button> -->
 		</section>
 	</PageHeader.Root>
 </div>

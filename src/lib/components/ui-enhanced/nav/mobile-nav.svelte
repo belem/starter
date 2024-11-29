@@ -35,14 +35,23 @@
 			<div class="flex flex-col space-y-2">
 					<div class="flex flex-col space-y-3 pt-6">
 						<h4 class="font-medium">{m.nav_math()}</h4>
-							<MobileLink href="/math" bind:open>
-								{m.math_bf_title()}
-									<span
-										class="ml-2 rounded-md bg-[#adfa1d] px-1.5 py-0.5 text-xs leading-none text-[#000000] no-underline group-hover:no-underline"
-									>
-										1
-									</span>
-							</MobileLink>
+						<MobileLink href="/math" bind:open>
+							{m.math_bf_title()}
+								<span
+									class="ml-2 rounded-md bg-[#adfa1d] px-1.5 py-0.5 text-xs leading-none text-[#000000] no-underline group-hover:no-underline"
+								>
+									1
+								</span>
+						</MobileLink>
+						<h4 class="font-medium">{m.game_game()}</h4>
+						<MobileLink href="/schulte" bind:open>
+							{m.game_schulte()}
+								<span
+									class="ml-2 rounded-md bg-[#adfa1d] px-1.5 py-0.5 text-xs leading-none text-[#000000] no-underline group-hover:no-underline"
+								>
+									1
+								</span>
+						</MobileLink>
 					</div>
 			</div>
 		</ScrollArea>

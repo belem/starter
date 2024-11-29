@@ -22,5 +22,14 @@
 		>
 		{m.nav_math()}
 		</a>
+		<a
+			href='./schulte'
+			class={cn(
+				"hover:text-foreground/80 transition-colors",
+				$page.url.pathname.startsWith('schulte') ? "text-foreground" : "text-foreground/60"
+			)}
+		>
+		{m.game_schulte()}
+		</a>
 	</nav>
 </div>
