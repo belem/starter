@@ -151,7 +151,7 @@
 </script>
 
 <div class="schulte flex h-full flex-col">
-	<h1 class="text-2xl my-4">{m.game_schulte()}</h1>
+	<h2 class="text-lg font-semibold">{m.game_schulte()}</h2>
 	
 	<div class="stats g3">
 		<div class="next">{m.game_schulte_next_number()}: <span bind:this={nextNumberElement}>1</span></div>
@@ -178,7 +178,7 @@
 		<button onclick={startGame}>{m.game_schulte_new()}</button>
 	</div>
 
-	<div class="switch-container mt-4 text-sm">
+	<div class="switch-container mt-2 text-sm">
 		<label class="switch">
 			<input type="checkbox" bind:this={highlightToggleElement} />
 			<span class="slider"></span>
