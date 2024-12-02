@@ -80,6 +80,13 @@
 		if (!gridSizeElement || !nextNumberElement || !timerElement) return;
 
 		const gridSize = parseInt(gridSizeElement.value);
+		if (gridSize === 6) {
+			let className = gridElement.getAttribute('class').replace(' six', '');
+			gridElement.setAttribute('class', className + ' six');
+		} else {
+			let className = gridElement.getAttribute('class').replace(' six', '');
+			gridElement.setAttribute('class', className);
+		}
 		createGrid(gridSize);
 		
 		currentNumber = 1;

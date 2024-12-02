@@ -142,6 +142,12 @@
 	transition: background-color 0.2s;
 }
 
+.schulte .six .cell {
+	width: 76px;
+	height: 76px;
+	font-size: 3.6rem;
+}
+
 .schulte .cell:hover {
 	background-color: rgba(208, 208, 208, 0.8);
 }
@@ -259,9 +265,15 @@
 
 @media (max-width: 640px) and (orientation: portrait) { 
 	.schulte .cell {
-		width: 70px;
-		height: 70px;
+		width: 66px;
+		height: 66px;
 		font-size: 2.5rem;
+	}
+
+	.schulte .six .cell {
+		width: 56px;
+		height: 56px;
+		font-size: 2.2rem;
 	}
 }
 
@@ -270,5 +282,11 @@
 		width: 40px;
 		height: 40px;
 		font-size: 2rem;
+	}
+
+	.schulte .six .cell {
+		width: 32px;
+		height: 32px;
+		font-size: 1.6rem;
 	}
 }
