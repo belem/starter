@@ -125,7 +125,7 @@
 	margin: 0.5rem 0;
 	background-color: #bbada0;
 	gap:5px;
-	border:8px solid #bbada0;
+	border:5px solid #bbada0;
 	border-radius: 5px;
 }
 
@@ -266,15 +266,15 @@
 
 @media (max-width: 640px) and (orientation: portrait) { 
 	.schulte .cell {
-		width: 66px;
-		height: 66px;
+		width: 64px;
+		height: 64px;
 		font-size: 2.5rem;
 	}
 
 	.schulte .six .cell {
-		width: 56px;
-		height: 56px;
-		font-size: 2.2rem;
+		width: 54px;
+		height: 54px;
+		font-size: 2.1rem;
 	}
 }
 
