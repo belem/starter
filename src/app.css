@@ -122,37 +122,37 @@
 
 .schulte .grid-container {
 	display: grid;
-	padding: 0.5rem;
-	background-color: #fff;
-	border-radius: 10px;
-	/* box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); */
 	margin: 0.5rem 0;
+	background-color: rgba(0, 0, 0, 0.5);
+	gap:1px;
+	border:1px solid rgba(0, 0, 0, 0.5);
 }
 
 .schulte .cell {
-	width: 55px;
-	height: 55px;
+	width: 90px;
+	height: 90px;
+	color: rgba(0, 0, 0, 1);
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	background-color: #666;
-	border: none;
-	border-radius: 5px;
-	font-size: 2rem;
+	background-color: #FDFFFF;
+	border-radius: 0px;
+	font-size: 4rem;
 	cursor: pointer;
 	transition: background-color 0.2s;
 }
 
 .schulte .cell:hover {
-	background-color: #d0d0d0;
+	background-color: rgba(208, 208, 208, 0.8);
 }
 
 .schulte .cell.correct {
-	background-color: #90ee90;
+	background-color: #4caf50;
+	color: rgba(255, 255, 255, 1);
 }
 
 .schulte .cell.wrong {
-	background-color: #ffb6c1;
+	background-color: #f95a72;
 }
 
 .schulte .g3 {
@@ -166,7 +166,7 @@
 }
 
 .schulte .g3 .next {
-	justify-self: flex-end;
+	justify-self: center;
 }
 
 .schulte .g3 .best {
@@ -174,13 +174,12 @@
 }
 
 .schulte .g3 .timer {
-	justify-self: flex-start;
+	justify-self: center;
 }
 
 .schulte select,
 .schulte button {
 	padding: 0.5rem;
-	margin: 0.2rem;
 	border: none;
 	border-radius: 5px;
 	background-color: #4caf50;
@@ -248,4 +247,28 @@
 
 .schulte input:checked + .slider:before {
 	transform: translateX(20px);
+}
+
+@media (max-width: 1280px) {
+	.schulte .cell {
+		width: 80px;
+		height: 80px;
+		font-size: 3rem;
+	}
+}
+
+@media (max-width: 640px) and (orientation: portrait) { 
+	.schulte .cell {
+		width: 70px;
+		height: 70px;
+		font-size: 2.5rem;
+	}
+}
+
+@media (max-height: 640px) and (orientation: landscape) { 
+	.schulte .cell {
+		width: 40px;
+		height: 40px;
+		font-size: 2rem;
+	}
 }

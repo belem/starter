@@ -13,7 +13,7 @@
 					class="font-medium underline underline-offset-4"
 				>
 					{m.title()}</a
-				>
+				>  {m.for_ashley()}
 			</p>
 		</div>
 	</div>
