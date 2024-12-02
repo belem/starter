@@ -123,20 +123,21 @@
 .schulte .grid-container {
 	display: grid;
 	margin: 0.5rem 0;
-	background-color: rgba(0, 0, 0, 0.5);
-	gap:1px;
-	border:1px solid rgba(0, 0, 0, 0.5);
+	background-color: #bbada0;
+	gap:5px;
+	border:8px solid #bbada0;
+	border-radius: 5px;
 }
 
 .schulte .cell {
 	width: 90px;
 	height: 90px;
-	color: rgba(0, 0, 0, 1);
+	color: rgb(53, 45, 37);
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	background-color: #FDFFFF;
-	border-radius: 0px;
+	background-color: rgba(255, 255, 255, 0.8);
+	border-radius: 1px;
 	font-size: 4rem;
 	cursor: pointer;
 	transition: background-color 0.2s;
@@ -149,7 +150,7 @@
 }
 
 .schulte .cell:hover {
-	background-color: rgba(208, 208, 208, 0.8);
+	background-color: rgba(238, 228, 218, 0.9);;
 }
 
 .schulte .cell.correct {
