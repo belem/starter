@@ -19,6 +19,12 @@
 
 <script>
 	import { Home } from "$lib/components/home";
+	import * as m from '$lib/paraglide/messages.js';
 </script>
 
+<svelte:head>
+	<title>{m.title()} - {m.seo_math_title()}, {m.seo_schulte_title()}</title>
+	<meta name="keywords" content="{m.seo_math_keywords()}, {m.seo_schulte_keywords()}">
+	<meta name="description" content="{m.seo_description()}, {m.seo_math_description()}, {m.seo_schulte_description()}">
+</svelte:head>
 <Home />

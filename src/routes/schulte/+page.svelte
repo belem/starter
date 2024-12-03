@@ -61,7 +61,7 @@
 				cell.classList.add('correct');
 			}
 			currentNumber++;
-			
+
 			if (nextNumberElement) {
 				nextNumberElement.textContent = currentNumber.toString();
 			}
@@ -88,7 +88,7 @@
 			gridElement.setAttribute('class', className);
 		}
 		createGrid(gridSize);
-		
+
 		currentNumber = 1;
 		nextNumberElement.textContent = currentNumber.toString();
 
@@ -97,7 +97,7 @@
 		timerElement.textContent = '00:00:00';
 		hasStartedGame = false;
 		isGameActive = true;
-		
+
 		// Reset congratulation message
 		if (congratulationElement) {
 			congratulationElement.innerHTML = '';
@@ -124,7 +124,7 @@
 			bestTimes[gridSize] = finalTime;
 			bestTimeElement.textContent = showFinalTime;
 		}
-		
+
 		congratulationElement.innerHTML = `${m.game_schulte_result()} ${showFinalTime}`;
 	}
 
@@ -157,26 +157,33 @@
 	});
 </script>
 
+<svelte:head>
+	<title>{m.title()} - {m.seo_schulte_title()}</title>
+	<meta name="keywords" content="{m.seo_keywords()}, {m.seo_schulte_keywords()}">
+	<meta name="description" content="{m.seo_description()}, {m.seo_schulte_description()}">
+</svelte:head>
+
 <div class="schulte flex h-full flex-col">
 	<h2 class="text-lg font-semibold">{m.game_schulte()}</h2>
-	
+
 	<div class="stats g3">
-		<div class="next">{m.game_schulte_next_number()}: <span bind:this={nextNumberElement}>1</span></div>
-		<div class="best">{m.game_schulte_best()}: <span bind:this={bestTimeElement}>--:--:--</span></div>
+		<div class="next">
+			{m.game_schulte_next_number()}: <span bind:this={nextNumberElement}>1</span>
+		</div>
+		<div class="best">
+			{m.game_schulte_best()}: <span bind:this={bestTimeElement}>--:--:--</span>
+		</div>
 		<div class="timer" bind:this={timerElement}>00:00:00</div>
 	</div>
-	
+
 	<div class="grid-container" bind:this={gridElement}></div>
-	
+
 	<div class="stats">
 		<p bind:this={congratulationElement}></p>
 	</div>
 
 	<div class="controls">
-		<select 
-			bind:this={gridSizeElement} 
-			onchange={handleGridSizeChange}
-		>
+		<select bind:this={gridSizeElement} onchange={handleGridSizeChange}>
 			<option value="3">3x3</option>
 			<option value="4">4x4</option>
 			<option value="5" selected>5x5</option>

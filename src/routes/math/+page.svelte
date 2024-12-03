@@ -327,6 +327,12 @@
 	};
 </script>
 
+<svelte:head>
+	<title>{m.title()} - {m.seo_math_title()}</title>
+	<meta name="keywords" content="{m.seo_keywords()}, {m.seo_math_keywords()}, {m.seo_math_keywords()}">
+	<meta name="description" content="{m.seo_description()}, {m.seo_math_description()}">
+</svelte:head>
+
 <div class="flex h-full flex-col">
 	<div id="sub-nav"
 		class=" container flex flex-col items-center justify-between space-y-0 px-4 py-4 md:h-16 md:flex-row 2xl:px-0"
