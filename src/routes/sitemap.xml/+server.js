@@ -10,7 +10,21 @@ export async function GET() {
 			xmlns:image="https://www.google.com/schemas/sitemap-image/1.1"
 			xmlns:video="https://www.google.com/schemas/sitemap-video/1.1"
 		>
-			<!-- <url> elements go here -->
+			<url>
+        <loc>https://kuibu.app/</loc>
+        <lastmod>2024-12-03T07:35:40+00:00</lastmod>
+        <priority>1.00</priority>
+      </url>
+      <url>
+        <loc>https://kuibu.app/math</loc>
+        <lastmod>2024-12-03T07:35:40+00:00</lastmod>
+        <priority>0.80</priority>
+      </url>
+      <url>
+        <loc>https://kuibu.app/schulte</loc>
+        <lastmod>2024-12-03T07:35:40+00:00</lastmod>
+        <priority>0.80</priority>
+      </url>
 		</urlset>`.trim(),
 		{
 			headers: {
