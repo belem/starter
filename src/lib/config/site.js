@@ -8,12 +8,12 @@ const navSchulte = m.game_schulte();
 
 export const siteConfig = {
 	name: siteTitle,
-	url: "https://kuibu",
-	ogImage: "https://shadcn-svelte.com/og.png",
+	url: "https://kuibu.app",
+	ogImage: "https://kuibu.app/images/logo.png",
 	description: siteDescription,
 	links: {
-		twitter: "https://twitter.com/",
-		github: "https://github.com/",
+		twitter: "https://twitter.com/ibelem",
+		github: "https://github.com/ibelem",
 	},
 	keywords: siteTitle,
   nav: [
