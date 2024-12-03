@@ -53,7 +53,6 @@
     "math_bf_sb_o4_1000": "3-stellig",
     "math_bf_sb_o4_10000": "4-stellig",
     "math_bf_sb_o4_100000": "5-stellig",
-    "math_bf_sb_o4_1000000": "6-stellig",
     "math_bf_sb_o5_title": "Übertrag",
     "math_bf_sb_o5_hover": "Beim Addieren wird der Übertrag von einer Spalte zur nächsten übertragen",
     "math_bf_sb_o6_title": "Entleihen",

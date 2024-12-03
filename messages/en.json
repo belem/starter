@@ -53,7 +53,6 @@
     "math_bf_sb_o4_1000": "3-Digit",
     "math_bf_sb_o4_10000": "4-Digit",
     "math_bf_sb_o4_100000": "5-Digit",
-    "math_bf_sb_o4_1000000": "6-Digit",
     "math_bf_sb_o5_title": "Carrying",
     "math_bf_sb_o5_hover": "Used in addition, carrying involves moving an extra value from one column to the next",
     "math_bf_sb_o6_title": "Borrowing",

@@ -15,16 +15,13 @@
 
 	import * as m from '$lib/paraglide/messages.js';
 
-	const getKeyFromValue = (value) => {
-		// Use Object.entries() to create an array of key-value pairs, then find the entry with the matching value
-		return Object.entries(types).find(([key, val]) => val === value)?.[0];
-	};
+	let html2pdf;
 
 	const print = () => {
 		window.print();
 	}
 
-	let factSelector, numberSelector, rangeSelector;
+	let factSelector, numberSelector, rangeSelector, mathHtml0, mathHtml1, mathHtml2;
 
 	let mathWorksheet = $state({});
 	mathWorksheetStore.subscribe((value) => {
@@ -87,6 +84,9 @@
 		} else {
 			// carrying = mathWorksheet.config.carrying;
 		}
+
+    const module = await import('html-to-pdf-js');
+    html2pdf = module.default;
 	});
 
 	function generateMathWorksheet(
@@ -325,22 +325,54 @@
 
 		generateMathWorksheet(factId, number, range, carrying, borrowing);
 	};
+
+	const pdf = () => {
+		let html = mathHtml0;
+		switch (typeId) {
+			case 0:
+				html = mathHtml0;
+				break;
+			case 1:
+				html = mathHtml1;
+				break;		
+			case 2:
+				html = mathHtml2;
+				break;	
+			default:	
+				html = mathHtml0;
+				break;
+		}
+		html2pdf().from(html).set({
+        margin: 10,
+        filename: `math_${mathWorksheet.config.fact}${mathWorksheet.config.type}${mathWorksheet.config.number}${mathWorksheet.config.range}.pdf`,
+        html2canvas: { scale: 5 },
+        jsPDF: {orientation: 'portrait', unit: 'mm', format: 'a4', compressPDF: false}
+    }).save();
+	}
 </script>
 
 <svelte:head>
 	<title>{m.title()} - {m.seo_math_title()}</title>
-	<meta name="keywords" content="{m.seo_keywords()}, {m.seo_math_keywords()}, {m.seo_math_keywords()}">
-	<meta name="description" content="{m.seo_description()}, {m.seo_math_description()}">
+	<meta
+		name="keywords"
+		content="{m.seo_keywords()}, {m.seo_math_keywords()}, {m.seo_math_keywords()}"
+	/>
+	<meta name="description" content="{m.seo_description()}, {m.seo_math_description()}" />
 </svelte:head>
 
 <div class="flex h-full flex-col">
-	<div id="sub-nav"
+	<div
+		id="sub-nav"
 		class=" container flex flex-col items-center justify-between space-y-0 px-4 py-4 md:h-16 md:flex-row 2xl:px-0"
 	>
 		<h2 class="text-lg font-semibold">{m.math_bf_title()}</h2>
 		<div class="space-y-2 md:space-y-0">
-			<Button variant="secondary" on:click={print}><Print class="mr-1 h-4" /> {m.math_bf_print()}</Button>
-			<Button variant="secondary" class="ml-2"><PDF class="mr-1 h-4" /> {m.math_bf_pdf()}</Button>
+			<Button variant="secondary" on:click={print}
+				><Print class="mr-1 h-4" /> {m.math_bf_print()}</Button
+			>
+			<Button variant="secondary" class="ml-2" on:click={pdf}
+				><PDF class="mr-1 h-4" /> {m.math_bf_pdf()}</Button
+			>
 			<Button variant="secondary" class="ml-2"
 				><PDF class="mr-1 h-4" /> {m.math_bf_pdf_answer()}</Button
 			>
@@ -451,9 +483,9 @@
 				<div class="mt-4 md:order-2 md:mt-0 {type}">
 					<Tabs.Content value="horizontal" class="mt-0 border-0 p-0" id="horizontal">
 						<div class="flex h-full flex-col space-y-4">
-							<div class="min-h-80 flex-1 rounded-md border p-0 md:p-8 sheet">
+							<div class="sheet min-h-80 flex-1 rounded-md border p-0 md:p-8">
 								{#if mathWorksheet?.worksheet?.length > 0}
-									<div class="flex flex-wrap px-2 md:px-8">
+									<div class="flex flex-wrap px-2 md:px-8 avoid-break" bind:this={mathHtml0}>
 										{#each mathWorksheet?.worksheet as { a, b, c, o }, i}
 											<div class="mt-2 flex w-1/2 flex-shrink-0 items-center text-xs md:text-lg">
 												<div class="mr-4 text-sm text-gray-200">
@@ -477,9 +509,9 @@
 					</Tabs.Content>
 					<Tabs.Content value="blank" class="mt-0 border-0 p-0" id="blank">
 						<div class="flex h-full flex-col space-y-4">
-							<div class="min-h-80 flex-1 rounded-md border p-0 md:p-8 sheet">
+							<div class="sheet min-h-80 flex-1 rounded-md border p-0 md:p-8">
 								{#if mathWorksheet?.worksheet?.length > 0}
-									<div class="flex flex-wrap px-2 md:px-8">
+									<div class="flex flex-wrap px-2 md:px-8 avoid-break" bind:this={mathHtml1}>
 										{#each mathWorksheet?.worksheet as { a, b, c, o }, i}
 											<div class="mt-2 flex w-1/2 flex-shrink-0 items-center text-xs md:text-lg">
 												<div class="mr-4 text-sm text-gray-200">
@@ -520,16 +552,16 @@
 					</Tabs.Content>
 					<Tabs.Content value="vertical" class="mt-0 border-0 p-0" id="vertical">
 						<div class="flex h-full flex-col space-y-4">
-							<div class="min-h-80 flex-1 rounded-md border p-0 md:p-8 sheet">
+							<div class="sheet min-h-80 flex-1 rounded-md border p-0 md:p-8">
 								{#if mathWorksheet?.worksheet?.length > 0}
-									<div class="flex flex-wrap px-2 md:px-8">
+									<div class="flex flex-wrap px-2 md:px-8 avoid-break" bind:this={mathHtml2}>
 										{#each mathWorksheet?.worksheet as { a, b, c, o }, i}
-											<div class="mt-4 md:mt-0 mb-0 md:mb-1.6 flex w-1/5 text-xs md:text-lg">
-												<div class="text-xs md:text-sm text-gray-200">
+											<div class="mb-0 mt-4 flex w-1/5 text-xs md:mb-2 md:mt-0 md:text-lg">
+												<div class="text-xs text-gray-200 md:text-sm">
 													{#if i < 9}0{/if}{i + 1}.
 												</div>
-												<div class="mx-1 md:mx-4 mb:2 md:mb-8 flex-1 pr-4 text-right">
-													<div class="mr-1 md:mr-9 flex flex-col">
+												<div class="mx-1 flex-1 pr-4 text-right md:mx-4 md:mb-12">
+													<div class="mr-1 flex flex-col">
 														<div class="flex">
 															<div class="flex-1"></div>
 															<div class="flex-1">{a}</div>
@@ -547,7 +579,7 @@
 															<div class="flex-1">{b}</div>
 														</div>
 													</div>
-													<div class="border-black border-t mt-1"></div>
+													<div class="mt-2 border-t border-black"></div>
 													<div class="mr-9 flex">
 														<div class="flex-1"></div>
 														<div class="flex-1">&nbsp;</div>
@@ -575,9 +607,9 @@
 		{/if}
 	</div> -->
 	<div id="qr">
-		<img src="../qrcode.png" alt="QR code">
+		<img src="../qrcode.png" alt="QR code" />
 		<div>
-			{m.description()}<br/>
+			{m.description()}<br />
 			https://kuibu.app
 		</div>
 	</div>

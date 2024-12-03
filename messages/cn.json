@@ -53,7 +53,6 @@
     "math_bf_sb_o4_1000": "3 位数",
     "math_bf_sb_o4_10000": "4 位数",
     "math_bf_sb_o4_100000": "5 位数",
-    "math_bf_sb_o4_1000000": "6 位数",
     "math_bf_sb_o5_title": "进位",
     "math_bf_sb_o5_hover": "某两数或多数的某一位，经计算后产生一个数字，会影响此位左侧高一位的计算结果。",
     "math_bf_sb_o6_title": "退位",
