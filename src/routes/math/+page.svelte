@@ -19,7 +19,7 @@
 
 	const print = () => {
 		window.print();
-	}
+	};
 
 	let factSelector, numberSelector, rangeSelector, mathHtml0, mathHtml1, mathHtml2;
 
@@ -85,8 +85,8 @@
 			// carrying = mathWorksheet.config.carrying;
 		}
 
-    const module = await import('html-to-pdf-js');
-    html2pdf = module.default;
+		const module = await import('html-to-pdf-js');
+		html2pdf = module.default;
 	});
 
 	function generateMathWorksheet(
@@ -334,21 +334,24 @@
 				break;
 			case 1:
 				html = mathHtml1;
-				break;		
+				break;
 			case 2:
 				html = mathHtml2;
-				break;	
-			default:	
+				break;
+			default:
 				html = mathHtml0;
 				break;
 		}
-		html2pdf().from(html).set({
-        margin: 10,
-        filename: `math_${mathWorksheet.config.fact}${mathWorksheet.config.type}${mathWorksheet.config.number}${mathWorksheet.config.range}.pdf`,
-        html2canvas: { scale: 5 },
-        jsPDF: {orientation: 'portrait', unit: 'mm', format: 'a4', compressPDF: false}
-    }).save();
-	}
+		html2pdf()
+			.from(html)
+			.set({
+				margin: 10,
+				filename: `math_${mathWorksheet.config.fact}${mathWorksheet.config.type}${mathWorksheet.config.number}${mathWorksheet.config.range}.pdf`,
+				html2canvas: { scale: 5 },
+				jsPDF: { orientation: 'portrait', unit: 'mm', format: 'a4', compressPDF: false }
+			})
+			.save();
+	};
 </script>
 
 <svelte:head>
@@ -484,40 +487,22 @@
 					<Tabs.Content value="horizontal" class="mt-0 border-0 p-0" id="horizontal">
 						<div class="flex h-full flex-col space-y-4">
 							<div class="sheet min-h-80 flex-1 rounded-md border p-0 md:p-8">
-								{#if mathWorksheet?.worksheet?.length > 0}
-									<div class="flex flex-wrap px-2 md:px-8 avoid-break" bind:this={mathHtml0}>
-										{#each mathWorksheet?.worksheet as { a, b, c, o }, i}
-											<div class="mt-2 flex w-1/2 flex-shrink-0 items-center text-xs md:text-lg">
-												<div class="mr-4 text-sm text-gray-200">
-													{#if i < 9}0{/if}{i + 1}.
-												</div>
-												{a}
-												{#if o === '*'}
-													×
-												{:else if o === '/'}
-													÷
-												{:else}
-													{o}
-												{/if}
-												{b} =
-											</div>
-										{/each}
+								<div bind:this={mathHtml0}>
+									<div class="sheet_title">{m.math_bf_title()}</div>
+									<div class="sheet_mark">
+										<span>{m.math_bf_name()} ____________</span>
+										<span>{m.math_bf_class()} ____________</span>
+										<span>{m.math_bf_score()} ____________</span>
 									</div>
-								{/if}
-							</div>
-						</div>
-					</Tabs.Content>
-					<Tabs.Content value="blank" class="mt-0 border-0 p-0" id="blank">
-						<div class="flex h-full flex-col space-y-4">
-							<div class="sheet min-h-80 flex-1 rounded-md border p-0 md:p-8">
-								{#if mathWorksheet?.worksheet?.length > 0}
-									<div class="flex flex-wrap px-2 md:px-8 avoid-break" bind:this={mathHtml1}>
-										{#each mathWorksheet?.worksheet as { a, b, c, o }, i}
-											<div class="mt-2 flex w-1/2 flex-shrink-0 items-center text-xs md:text-lg">
-												<div class="mr-4 text-sm text-gray-200">
-													{#if i < 9}0{/if}{i + 1}.
-												</div>
-												{#if randomBoolean()}
+									{#if mathWorksheet?.worksheet?.length > 0}
+										<div class="avoid-break flex flex-wrap px-16 px-2">
+											{#each mathWorksheet?.worksheet as { a, b, c, o }, i}
+												<div
+													class="mt-4 flex w-1/2 flex-shrink-0 items-center text-2xl md:text-2xl"
+												>
+													<div class="mr-4 text-2xl text-gray-200">
+														{#if i < 9}0{/if}{i + 1}.
+													</div>
 													{a}
 													{#if o === '*'}
 														×
@@ -526,69 +511,137 @@
 													{:else}
 														{o}
 													{/if}
-													<div
-														class="{blackWidth} mx-2 h-4 border-b border-solid border-gray-200"
-													></div>
-												{:else}
-													<div
-														class="{blackWidth} mr-2 h-4 border-b border-solid border-gray-200"
-													></div>
-													{#if o === '*'}
-														×
-													{:else if o === '/'}
-														÷
-													{:else}
-														{o}
-													{/if}
-													{b}
-												{/if}
-												= {c}
-											</div>
-										{/each}
+													{b} =
+												</div>
+											{/each}
+										</div>
+									{/if}
+									<div class="qr">
+										<img src="../qrcode.png" alt="QR code" />
+										<div>
+											<h5>{m.title()}</h5>
+											{m.description()}<br />
+											https://kuibu.app
+										</div>
 									</div>
-								{/if}
+								</div>
+							</div>
+						</div>
+					</Tabs.Content>
+					<Tabs.Content value="blank" class="mt-0 border-0 p-0" id="blank">
+						<div class="flex h-full flex-col space-y-4">
+							<div class="sheet min-h-80 flex-1 rounded-md border p-0 md:p-8">
+								<div bind:this={mathHtml1}>
+									<div class="sheet_title">{m.math_bf_title()}</div>
+									<div class="sheet_mark">
+										<span>{m.math_bf_name()} ____________</span>
+										<span>{m.math_bf_class()} ____________</span>
+										<span>{m.math_bf_score()} ____________</span>
+									</div>
+									{#if mathWorksheet?.worksheet?.length > 0}
+										<div class="avoid-break flex flex-wrap px-2 md:px-16">
+											{#each mathWorksheet?.worksheet as { a, b, c, o }, i}
+												<div class="mt-4 flex w-1/2 flex-shrink-0 items-center text-xs md:text-lg">
+													<div class="mr-4 text-sm text-gray-200">
+														{#if i < 9}0{/if}{i + 1}.
+													</div>
+													{#if randomBoolean()}
+														{a}
+														{#if o === '*'}
+															×
+														{:else if o === '/'}
+															÷
+														{:else}
+															{o}
+														{/if}
+														<div
+															class="{blackWidth} mx-2 h-4 border-b border-solid border-gray-200"
+														></div>
+													{:else}
+														<div
+															class="{blackWidth} mr-2 h-4 border-b border-solid border-gray-200"
+														></div>
+														{#if o === '*'}
+															×
+														{:else if o === '/'}
+															÷
+														{:else}
+															{o}
+														{/if}
+														{b}
+													{/if}
+													= {c}
+												</div>
+											{/each}
+										</div>
+									{/if}
+									<div class="qr">
+										<img src="../qrcode.png" alt="QR code" />
+										<div>
+											<h5>{m.title()}</h5>
+											{m.description()}<br />
+											https://kuibu.app
+										</div>
+									</div>
+								</div>
 							</div>
 						</div>
 					</Tabs.Content>
 					<Tabs.Content value="vertical" class="mt-0 border-0 p-0" id="vertical">
 						<div class="flex h-full flex-col space-y-4">
 							<div class="sheet min-h-80 flex-1 rounded-md border p-0 md:p-8">
-								{#if mathWorksheet?.worksheet?.length > 0}
-									<div class="flex flex-wrap px-2 md:px-8 avoid-break" bind:this={mathHtml2}>
-										{#each mathWorksheet?.worksheet as { a, b, c, o }, i}
-											<div class="mb-0 mt-4 flex w-1/5 text-xs md:mb-2 md:mt-0 md:text-lg">
-												<div class="text-xs text-gray-200 md:text-sm">
-													{#if i < 9}0{/if}{i + 1}.
-												</div>
-												<div class="mx-1 flex-1 pr-4 text-right md:mx-4 md:mb-12">
-													<div class="mr-1 flex flex-col">
-														<div class="flex">
-															<div class="flex-1"></div>
-															<div class="flex-1">{a}</div>
-														</div>
-														<div class="flex">
-															<div class="flex-1">
-																{#if o === '*'}
-																	×
-																{:else if o === '/'}
-																	÷
-																{:else}
-																	{o}
-																{/if}
-															</div>
-															<div class="flex-1">{b}</div>
-														</div>
-													</div>
-													<div class="mt-2 border-t border-black"></div>
-													<div class="mr-9 flex">
-														<div class="flex-1"></div>
-														<div class="flex-1">&nbsp;</div>
-													</div>
-												</div>
-											</div>
-										{/each}
+								<div bind:this={mathHtml2}>
+									<div class="sheet_title">{m.math_bf_title()}</div>
+									<div class="sheet_mark">
+										<span>{m.math_bf_name()} ____________</span>
+										<span>{m.math_bf_class()} ____________</span>
+										<span>{m.math_bf_score()} ____________</span>
 									</div>
-								{/if}
+									{#if mathWorksheet?.worksheet?.length > 0}
+										<div class="avoid-break flex flex-wrap px-2 md:px-16">
+											{#each mathWorksheet?.worksheet as { a, b, c, o }, i}
+												<div class="mb-0 mt-4 flex w-1/5 text-xs md:mb-2 md:mt-0 md:text-lg">
+													<div class="text-xs text-gray-200 md:text-sm">
+														{#if i < 9}0{/if}{i + 1}.
+													</div>
+													<div class="mx-1 flex-1 pr-4 text-right md:mx-4 md:mb-12">
+														<div class="mr-1 flex flex-col">
+															<div class="flex">
+																<div class="flex-1"></div>
+																<div class="flex-1">{a}</div>
+															</div>
+															<div class="flex">
+																<div class="flex-1">
+																	{#if o === '*'}
+																		×
+																	{:else if o === '/'}
+																		÷
+																	{:else}
+																		{o}
+																	{/if}
+																</div>
+																<div class="flex-1">{b}</div>
+															</div>
+														</div>
+														<div class="mt-2 border-t border-black"></div>
+														<div class="mr-9 flex">
+															<div class="flex-1"></div>
+															<div class="flex-1">&nbsp;</div>
+														</div>
+													</div>
+												</div>
+											{/each}
+										</div>
+									{/if}
+									<div class="qr">
+										<img src="../qrcode.png" alt="QR code" />
+										<div>
+											<h5>{m.title()}</h5>
+											{m.description()}<br />
+											https://kuibu.app
+										</div>
+									</div>
+								</div>
 							</div>
 						</div>
 					</Tabs.Content>
@@ -606,11 +659,4 @@
 			{mathWorksheet.config.borrowing}
 		{/if}
 	</div> -->
-	<div id="qr">
-		<img src="../qrcode.png" alt="QR code" />
-		<div>
-			{m.description()}<br />
-			https://kuibu.app
-		</div>
-	</div>
 </div>
