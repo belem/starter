@@ -1,7 +1,6 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 	import { mathWorksheetStore } from '$lib/store/store';
-	import CounterClockwiseClock from 'svelte-radix/CounterClockwiseClock.svelte';
 	import { Horizontal, Blank, Vertical } from '$lib/components/ui-enhanced/icons/math/facts/index';
 	import { NumberSelector, ProblemsSelector, RangeSelector } from './components/index';
 	import { Button } from '$lib/components/ui/button/index.js';
@@ -10,6 +9,7 @@
 	import * as HoverCard from '$lib/components/ui/hover-card/index.js';
 	import Label from '$lib/components/ui/label/label.svelte';
 	import { Switch } from '$lib/components/ui/switch/index.js';
+	import Answer from '$lib/components/ui-enhanced/icons/answer.svelte';
 	import PDF from '$lib/components/ui-enhanced/icons/pdf.svelte';
 	import Print from '$lib/components/ui-enhanced/icons/print.svelte';
 
@@ -22,6 +22,9 @@
 	};
 
 	let factSelector, numberSelector, rangeSelector, mathHtml0, mathHtml1, mathHtml2;
+	let isDisabled = $state(true);
+	let answerToggles = $state(true);
+	let answerBlankToggles = $state(true);
 
 	let mathWorksheet = $state({});
 	mathWorksheetStore.subscribe((value) => {
@@ -298,6 +301,18 @@
 		// return worksheet;
 	}
 
+	const generateAnswers = () => {
+		answerToggles = false;
+		answerBlankToggles = false;
+		generate();
+	};
+
+	const generateNoAnswers = () => {
+		answerToggles = true;
+		answerBlankToggles = true;
+		generate();
+	};
+
 	const generate = () => {
 		let factId = factSelector?.getSelectedFactId();
 		let number = numberSelector?.getSelectedNumber()[0];
@@ -324,6 +339,8 @@
 		updateMathWorksheet(mathWorksheet);
 
 		generateMathWorksheet(factId, number, range, carrying, borrowing);
+
+		isDisabled = false;
 	};
 
 	const pdf = () => {
@@ -370,15 +387,15 @@
 	>
 		<h2 class="text-lg font-semibold">{m.math_bf_title()}</h2>
 		<div class="space-y-2 md:space-y-0">
-			<Button variant="secondary" on:click={print}
+			<Button variant="secondary" on:click={print} disabled={isDisabled}
 				><Print class="mr-1 h-4" /> {m.math_bf_print()}</Button
 			>
-			<Button variant="secondary" class="ml-2" on:click={pdf}
+			<!-- <Button variant="secondary" class="ml-2" on:click={pdf}
 				><PDF class="mr-1 h-4" /> {m.math_bf_pdf()}</Button
-			>
-			<Button variant="secondary" class="ml-2"
+			> -->
+			<!-- <Button variant="secondary" class="ml-2"
 				><PDF class="mr-1 h-4" /> {m.math_bf_pdf_answer()}</Button
-			>
+			> -->
 		</div>
 	</div>
 	<Separator />
@@ -476,10 +493,17 @@
 						</HoverCard.Root>
 					</div>
 					<div class="flex items-center justify-between">
-						<Button on:click={generate} class="w-24">{m.math_bf_btn_generate()}</Button>
-						<Button variant="secondary" class="w-24">
-							<span class="sr-only">Show history</span>
-							<CounterClockwiseClock class="h-4 w-4" />
+						<Button on:click={generateNoAnswers} class="w-24" title={m.math_bf_btn_generate()}
+							>{m.math_bf_btn_generate()}</Button
+						>
+						<Button
+							on:click={generateAnswers}
+							variant="secondary"
+							class="w-24"
+							title={m.math_bf_btn_generate_answers()}
+						>
+							<span class="sr-only">{m.math_bf_btn_generate_answers()}</span>
+							<Answer class="h-4 w-4" />
 						</Button>
 					</div>
 				</div>
@@ -490,17 +514,15 @@
 								<div bind:this={mathHtml0}>
 									<div class="sheet_title">{m.math_bf_title()}</div>
 									<div class="sheet_mark">
-										<span>{m.math_bf_name()} ____________</span>
-										<span>{m.math_bf_class()} ____________</span>
-										<span>{m.math_bf_score()} ____________</span>
+										<span>{m.math_bf_name()} ________</span>
+										<span>{m.math_bf_class()} ________</span>
+										<span>{m.math_bf_score()} ________</span>
 									</div>
 									{#if mathWorksheet?.worksheet?.length > 0}
-										<div class="avoid-break flex flex-wrap px-16 px-2">
+										<div class="actual avoid-break mt-8 flex flex-wrap px-0 md:px-16">
 											{#each mathWorksheet?.worksheet as { a, b, c, o }, i}
-												<div
-													class="mt-4 flex w-1/2 flex-shrink-0 items-center text-2xl md:text-2xl"
-												>
-													<div class="mr-4 text-2xl text-gray-200">
+												<div class="mt-4 pl-6 flex w-1/2 flex-shrink-0 items-center">
+													<div class="mr-4 mark text-gray-100">
 														{#if i < 9}0{/if}{i + 1}.
 													</div>
 													{a}
@@ -511,7 +533,8 @@
 													{:else}
 														{o}
 													{/if}
-													{b} =
+													{b} = {#if answerToggles}<span class="answer type_0">{c}</span
+														>{:else}<span class="type_0">{c}</span>{/if}
 												</div>
 											{/each}
 										</div>
@@ -534,15 +557,17 @@
 								<div bind:this={mathHtml1}>
 									<div class="sheet_title">{m.math_bf_title()}</div>
 									<div class="sheet_mark">
-										<span>{m.math_bf_name()} ____________</span>
-										<span>{m.math_bf_class()} ____________</span>
-										<span>{m.math_bf_score()} ____________</span>
+										<span>{m.math_bf_name()} ________</span>
+										<span>{m.math_bf_class()} ________</span>
+										<span>{m.math_bf_score()} ________</span>
 									</div>
 									{#if mathWorksheet?.worksheet?.length > 0}
-										<div class="avoid-break flex flex-wrap px-2 md:px-16">
+										<div class="actual avoid-break mt-8 flex flex-wrap px-0 md:px-16">
 											{#each mathWorksheet?.worksheet as { a, b, c, o }, i}
-												<div class="mt-4 flex w-1/2 flex-shrink-0 items-center text-xs md:text-lg">
-													<div class="mr-4 text-sm text-gray-200">
+												<div
+													class="my-2 flex w-1/2 flex-shrink-0 items-center pl-8"
+												>
+													<div class="mr-4 mark text-gray-100">
 														{#if i < 9}0{/if}{i + 1}.
 													</div>
 													{#if randomBoolean()}
@@ -554,13 +579,29 @@
 														{:else}
 															{o}
 														{/if}
-														<div
-															class="{blackWidth} mx-2 h-4 border-b border-solid border-gray-200"
-														></div>
+														{#if answerBlankToggles}<div
+																class="{blackWidth} mx-2 h-4 border-b border-dashed border-gray-200"
+															></div>{:else}<div
+																class="answer_blank {blackWidth} mx-2 h-4 border-b border-dashed border-gray-200"
+															></div>{/if}
+
+														{#if answerToggles}<div class="answer type_1">{b}</div>{:else}<div
+																class="type_1"
+															>
+																{b}
+															</div>{/if}
 													{:else}
-														<div
-															class="{blackWidth} mr-2 h-4 border-b border-solid border-gray-200"
-														></div>
+														{#if answerToggles}<div class="answer type_1">{a}</div>{:else}<div
+																class="type_1"
+															>
+																{a}
+															</div>{/if}
+
+														{#if answerBlankToggles}<div
+																class="{blackWidth} mr-2 h-4 border-b border-dashed border-gray-200"
+															></div>{:else}<div
+																class="answer_blank {blackWidth} mr-2 h-4 border-b border-dashed border-gray-200"
+															></div>{/if}
 														{#if o === '*'}
 															×
 														{:else if o === '/'}
@@ -593,18 +634,18 @@
 								<div bind:this={mathHtml2}>
 									<div class="sheet_title">{m.math_bf_title()}</div>
 									<div class="sheet_mark">
-										<span>{m.math_bf_name()} ____________</span>
-										<span>{m.math_bf_class()} ____________</span>
-										<span>{m.math_bf_score()} ____________</span>
+										<span>{m.math_bf_name()} ________</span>
+										<span>{m.math_bf_class()} ________</span>
+										<span>{m.math_bf_score()} ________</span>
 									</div>
 									{#if mathWorksheet?.worksheet?.length > 0}
-										<div class="avoid-break flex flex-wrap px-2 md:px-16">
+										<div class="actual avoid-break mt-8 flex flex-wrap px-0 md:px-8">
 											{#each mathWorksheet?.worksheet as { a, b, c, o }, i}
-												<div class="mb-0 mt-4 flex w-1/5 text-xs md:mb-2 md:mt-0 md:text-lg">
-													<div class="text-xs text-gray-200 md:text-sm">
+												<div class="my-4 flex w-1/5 px-2">
+													<div class="mark text-gray-100">
 														{#if i < 9}0{/if}{i + 1}.
 													</div>
-													<div class="mx-1 flex-1 pr-4 text-right md:mx-4 md:mb-12">
+													<div class="mx-1 flex-1 pr-4 text-right">
 														<div class="mr-1 flex flex-col">
 															<div class="flex">
 																<div class="flex-1"></div>
@@ -624,9 +665,12 @@
 															</div>
 														</div>
 														<div class="mt-2 border-t border-black"></div>
-														<div class="mr-9 flex">
+														<div class="flex">
 															<div class="flex-1"></div>
-															<div class="flex-1">&nbsp;</div>
+															<div class="flex-1">
+																{#if answerToggles}<span class="answer type_2">{c}</span
+																	>{:else}<span class="type_2">{c}</span>{/if}
+															</div>
 														</div>
 													</div>
 												</div>

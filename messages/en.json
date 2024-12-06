@@ -29,6 +29,7 @@
     "math_bf_name":"Name",
     "math_bf_score":"Score",
     "math_bf_print": "Print",
+    "math_bf_print_answer": "Print · Answers",
     "math_bf_pdf": "PDF",
     "math_bf_pdf_answer": "PDF · Answers",
     "math_bf_sb_o1_title": "Basic Math Facts",
@@ -60,5 +61,6 @@
     "math_bf_sb_o5_hover": "Used in addition, carrying involves moving an extra value from one column to the next",
     "math_bf_sb_o6_title": "Borrowing",
     "math_bf_sb_o6_hover": "Borrowing (Regrouping), used in subtraction, borrowing involves taking a value from the next column to the left",
-    "math_bf_btn_generate": "Generate"
+    "math_bf_btn_generate": "Generate",
+    "math_bf_btn_generate_answers": "Generate · Anwsers"
 }

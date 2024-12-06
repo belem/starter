@@ -15,14 +15,29 @@ export async function GET() {
         <lastmod>2024-12-03T07:35:40+00:00</lastmod>
         <priority>1.00</priority>
       </url>
+			<url>
+        <loc>https://kuibu.app/cn</loc>
+        <lastmod>2024-12-04T07:35:40+00:00</lastmod>
+        <priority>1.00</priority>
+      </url>
       <url>
         <loc>https://kuibu.app/math</loc>
         <lastmod>2024-12-03T07:35:40+00:00</lastmod>
         <priority>0.80</priority>
       </url>
+			<url>
+        <loc>https://kuibu.app/cn/math</loc>
+        <lastmod>2024-12-04T07:35:40+00:00</lastmod>
+        <priority>0.80</priority>
+      </url>
       <url>
         <loc>https://kuibu.app/schulte</loc>
         <lastmod>2024-12-03T07:35:40+00:00</lastmod>
+        <priority>0.80</priority>
+      </url>
+			<url>
+        <loc>https://kuibu.app/cn/schulte</loc>
+        <lastmod>2024-12-04T07:35:40+00:00</lastmod>
         <priority>0.80</priority>
       </url>
 		</urlset>`.trim(),
