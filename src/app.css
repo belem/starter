@@ -236,21 +236,21 @@
 .schulte .grid-container {
 	display: grid;
 	margin: 0.5rem 0;
-	background-color: #bbada0;
+	/* background-color: #E6F2F7;
+	border:5px solid #E6F2F7; */
 	gap:5px;
-	border:5px solid #bbada0;
 	border-radius: 5px;
 }
 
 .schulte .cell {
 	width: 90px;
 	height: 90px;
-	color: rgb(53, 45, 37);
+	color: #2C3E50;
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	background-color: rgba(255, 255, 255, 0.8);
-	border-radius: 1px;
+	background-color: #E0EFDE;
+	border-radius: 5px;
 	font-size: 4rem;
 	cursor: pointer;
 	transition: background-color 0.2s;
@@ -263,16 +263,17 @@
 }
 
 .schulte .cell:hover {
-	background-color: rgba(238, 228, 218, 0.9);;
+	background-color: #F7F7F2;
 }
 
 .schulte .cell.correct {
-	background-color: #4caf50;
+	background: linear-gradient(315deg, #0c8346, #0c9339, rgba(12,163,40,1));
 	color: rgba(255, 255, 255, 1);
 }
 
 .schulte .cell.wrong {
-	background-color: #f95a72;
+	background: linear-gradient(330deg, #ff0037, #ff4870, rgba(255,144,168,1));
+	color: rgba(255, 255, 255, 1);
 }
 
 .schulte .g3 {
