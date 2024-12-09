@@ -31,5 +31,14 @@
 		>
 		{m.game_schulte()}
 		</a>
+		<a
+			href='./about'
+			class={cn(
+				"hover:text-foreground/80 transition-colors",
+				$page.url.pathname.startsWith('about') ? "text-foreground" : "text-foreground/60"
+			)}
+		>
+		{m.about()}
+		</a>
 	</nav>
 </div>

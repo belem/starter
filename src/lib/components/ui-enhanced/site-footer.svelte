@@ -13,7 +13,13 @@
 					class="font-medium underline underline-offset-4"
 				>
 					{m.title()}</a
-				>  {m.for_ashley()}
+				>  {m.for_ashley()} <a
+				href="../tou"
+				rel="noreferrer"
+				class="font-medium underline underline-offset-4"
+			>
+				{m.tou()}</a
+			>
 			</p>
 		</div>
 	</div>

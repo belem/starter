@@ -52,6 +52,23 @@
 									1
 								</span>
 						</MobileLink>
+						<h4 class="font-medium">{m.about()}</h4>
+						<MobileLink href="/about" bind:open>
+							{m.about()}
+								<span
+									class="ml-2 rounded-md bg-[#adfa1d] px-1.5 py-0.5 text-xs leading-none text-[#000000] no-underline group-hover:no-underline"
+								>
+									1
+								</span>
+						</MobileLink>
+						<MobileLink href="/tou" bind:open>
+							{m.tou()}
+								<span
+									class="ml-2 rounded-md bg-[#adfa1d] px-1.5 py-0.5 text-xs leading-none text-[#000000] no-underline group-hover:no-underline"
+								>
+									1
+								</span>
+						</MobileLink>
 					</div>
 			</div>
 		</ScrollArea>
