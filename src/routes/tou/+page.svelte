@@ -56,8 +56,7 @@
 		</ol>
 
 		<h4>8. Contact Information</h4>
-		For any questions or concerns, please contact: - Email: hi@live.com with title starts with "Kuibu:
-		"
+		<div class="mx-6 mt-2">For any questions or concerns, please contact hi[at]live.com with title starts with "Kuibu:"</div>
 
 		<h4>9. Changes to Terms</h4>
 		<ol>
@@ -66,8 +65,7 @@
 			<li>Continued use of Kuibu implies acceptance of updated terms</li>
 		</ol>
 
-		<h4>Last Updated: Dec 9, 2024</h4> 
-		<h4>Kuibu: Growing together, learning with joy</h4>
+		<div class="mt-2">Last Updated: Dec 9, 2024</div>
 	</div>
 
 	<SiteFooter></SiteFooter>
@@ -76,6 +74,7 @@
 <style>
 	#tos {
 		text-align: left;
+		margin: 1rem auto;
 	}
 
 	h4 {
@@ -84,7 +83,7 @@
 	}
 
 	ol {
-		margin-left: 2rem;
+		margin: 0.5rem 1.5rem 0.5rem 1.5rem;
 	}
 
 	ol li {

@@ -1,10 +1,10 @@
 <script lang="ts">
-	import { Icons } from "../icons/index.js";
-	import MobileLink from "./mobile-link.svelte";
-	import * as Sheet from "$lib/components/ui/sheet/index.js";
-	import { Button } from "$lib/components/ui/button/index.js";
-	import { ScrollArea } from "$lib/components/ui/scroll-area/index.js";
-	import { siteConfig } from "$lib/config/site.js";
+	import { Icons } from '../icons/index.js';
+	import MobileLink from './mobile-link.svelte';
+	import * as Sheet from '$lib/components/ui/sheet/index.js';
+	import { Button } from '$lib/components/ui/button/index.js';
+	import { ScrollArea } from '$lib/components/ui/scroll-area/index.js';
+	import { siteConfig } from '$lib/config/site.js';
 	import * as m from '$lib/paraglide/messages.js';
 
 	let open = false;
@@ -33,43 +33,44 @@
 						</MobileLink>
 			</div> -->
 			<div class="flex flex-col space-y-2">
-					<div class="flex flex-col space-y-3 pt-6">
-						<h4 class="font-medium">{m.nav_math()}</h4>
-						<MobileLink href="/math" bind:open>
-							{m.math_bf_title()}
-								<span
-									class="ml-2 rounded-md bg-[#adfa1d] px-1.5 py-0.5 text-xs leading-none text-[#000000] no-underline group-hover:no-underline"
-								>
-									1
-								</span>
-						</MobileLink>
-						<h4 class="font-medium">{m.game_game()}</h4>
-						<MobileLink href="/schulte" bind:open>
-							{m.game_schulte()}
-								<span
-									class="ml-2 rounded-md bg-[#adfa1d] px-1.5 py-0.5 text-xs leading-none text-[#000000] no-underline group-hover:no-underline"
-								>
-									1
-								</span>
-						</MobileLink>
-						<h4 class="font-medium">{m.about()}</h4>
-						<MobileLink href="/about" bind:open>
-							{m.about()}
-								<span
-									class="ml-2 rounded-md bg-[#adfa1d] px-1.5 py-0.5 text-xs leading-none text-[#000000] no-underline group-hover:no-underline"
-								>
-									1
-								</span>
-						</MobileLink>
-						<MobileLink href="/tou" bind:open>
-							{m.tou()}
-								<span
-									class="ml-2 rounded-md bg-[#adfa1d] px-1.5 py-0.5 text-xs leading-none text-[#000000] no-underline group-hover:no-underline"
-								>
-									1
-								</span>
-						</MobileLink>
-					</div>
+				<div class="flex flex-col space-y-3 pt-6">
+					<h4 class="font-medium">
+						{m.nav_math()}
+						<span
+							class="ml-2 rounded-md bg-[#adfa1d] px-1.5 py-0.5 text-xs leading-none text-[#000000] no-underline group-hover:no-underline"
+						>
+							1
+						</span>
+					</h4>
+					<MobileLink class="ml-4" href="/math" bind:open>
+						{m.math_bf_title()}
+					</MobileLink>
+					<h4 class="font-medium">
+						{m.game_game()}
+						<span
+							class="ml-2 rounded-md bg-[#adfa1d] px-1.5 py-0.5 text-xs leading-none text-[#000000] no-underline group-hover:no-underline"
+						>
+							1
+						</span>
+					</h4>
+					<MobileLink class="ml-4" href="/schulte" bind:open>
+						{m.game_schulte()}
+					</MobileLink>
+					<h4 class="font-medium">
+						{m.about()}
+						<span
+							class="ml-2 rounded-md bg-[#adfa1d] px-1.5 py-0.5 text-xs leading-none text-[#000000] no-underline group-hover:no-underline"
+						>
+							2
+						</span>
+					</h4>
+					<MobileLink class="ml-4" href="/tou" bind:open>
+						{m.tou()}
+					</MobileLink>
+					<MobileLink class="ml-4" href="/about" bind:open>
+						{m.about()}
+					</MobileLink>
+				</div>
 			</div>
 		</ScrollArea>
 	</Sheet.Content>
