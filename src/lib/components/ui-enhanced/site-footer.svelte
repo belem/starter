@@ -10,14 +10,14 @@
 				<a
 					href="../"
 					rel="noreferrer"
-					class="font-medium underline underline-offset-4"
+					class="font-medium"
 				>
 					{m.title()}</a
 				>  {m.for_ashley()} 
 				<!-- <a
 				href="../tou"
 				rel="noreferrer"
-				class="font-medium underline underline-offset-4"
+				class="font-medium"
 			>
 				{m.tou()}</a
 			> -->

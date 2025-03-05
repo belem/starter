@@ -63,6 +63,10 @@
 	}
 }
 
+body {
+	min-height: 100vh;
+}
+
 .sheet_title, .sheet_mark {
 	text-align: center;
 }
