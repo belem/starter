@@ -83,7 +83,7 @@
 	class="bg-white px-4 items-center justify-center"
 >
 	<div 
-		class="w-full flex flex-col md:grid md:grid-cols-4 gap-4 {isRefreshing ? 'animate-pulse' : ''}"
+		class="w-full flex flex-col md:px-8 md:grid md:grid-cols-4 gap-4 md:items-center md:justify-center {isRefreshing ? 'animate-pulse' : ''}"
 	>
 		{#each displayedPoems as poemItem (poemItem.name)}
 			<div 
@@ -91,19 +91,21 @@
 				class="bg-white shadow-sm rounded-sm p-4 border-2 border-gray-100 hover:shadow-lg transition-all duration-300 ease-in-out transform hover:-translate-y-1"
 			>
 				{#if poemItem.url}
-					<a href={poemItem.url} rel="noopener noreferrer">
-						<h2 class="text-xl font-bold text-gray-800 mb-2">{poemItem.name}</h2>
-						<p class="text-gray-600">{poemItem.author}</p>
+					<a href={poemItem.url} rel="noopener noreferrer" class="flex flex-row md:flex-col gap-4 items-center justify-center">
+						<h2 class="text-xl font-bold text-gray-800">{poemItem.name}</h2>
+						<p class="text-gray-600 md:mt-[-10px]">{poemItem.author}</p>
 					</a>
 				{:else}
-					<h2 class="text-xl font-bold text-gray-800 mb-2">{poemItem.name}</h2>
-					<p class="text-gray-600">{poemItem.author}</p>
+					<div class="flex flex-row md:flex-col gap-4 items-center justify-center">
+						<h2 class="text-xl font-bold text-gray-800">{poemItem.name}</h2>
+						<p class="text-gray-600 md:mt-[-10px]">{poemItem.author}</p>
+					</div>
 				{/if}
 			</div>
 		{/each}
 	</div>
 
-	<div class="mt-4 text-center text-gray-500 text-sm">
+	<div class="mt-4 text-center text-gray-200 text-sm">
 		{m.poem_pull_down()}
 	</div>
 </div>
