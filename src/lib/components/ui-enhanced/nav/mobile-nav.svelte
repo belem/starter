@@ -35,6 +35,17 @@
 			<div class="flex flex-col space-y-2">
 				<div class="flex flex-col space-y-3 pt-6">
 					<h4 class="font-medium">
+						{m.nav_poem()}
+						<span
+							class="ml-2 rounded-md bg-[#adfa1d] px-1.5 py-0.5 text-xs leading-none text-[#000000] no-underline group-hover:no-underline"
+						>
+							1
+						</span>
+					</h4>
+					<MobileLink class="ml-4" href="/poem" bind:open>
+						{m.poem_title()}
+					</MobileLink>
+					<h4 class="font-medium">
 						{m.nav_math()}
 						<span
 							class="ml-2 rounded-md bg-[#adfa1d] px-1.5 py-0.5 text-xs leading-none text-[#000000] no-underline group-hover:no-underline"

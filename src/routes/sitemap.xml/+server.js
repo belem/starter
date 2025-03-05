@@ -21,6 +21,16 @@ export async function GET() {
         <priority>1.00</priority>
       </url>
       <url>
+        <loc>https://kuibu.app/poem</loc>
+        <lastmod>2025-03-02T13:30:00+00:00</lastmod>
+        <priority>1.00</priority>
+      </url>
+      <url>
+        <loc>https://kuibu.app/cn/poem</loc>
+        <lastmod>2025-03-02T13:30:00+00:00</lastmod>
+        <priority>1.00</priority>
+      </url>
+      <url>
         <loc>https://kuibu.app/math</loc>
         <lastmod>2024-12-03T07:35:40+00:00</lastmod>
         <priority>0.80</priority>

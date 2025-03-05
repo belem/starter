@@ -1,7 +1,7 @@
 <script lang="ts">
-	import { Icons } from "../icons/index.js";
-	import { page } from "$app/stores";
-	import { cn } from "$lib/utils.js";
+	import { Icons } from '../icons/index.js';
+	import { page } from '$app/stores';
+	import { cn } from '$lib/utils.js';
 	import * as m from '$lib/paraglide/messages.js';
 </script>
 
@@ -14,31 +14,40 @@
 	</a>
 	<nav class="flex items-center gap-6 text-sm">
 		<a
-			href='./math'
+			href="./poem"
 			class={cn(
-				"hover:text-foreground/80 transition-colors",
-				$page.url.pathname.startsWith('math') ? "text-foreground" : "text-foreground/60"
+				'transition-colors hover:text-foreground/80',
+				$page.url.pathname.startsWith('poem') ? 'text-foreground' : 'text-foreground/60'
 			)}
 		>
-		{m.nav_math()}
+			{m.nav_poem()}
 		</a>
 		<a
-			href='./schulte'
+			href="./math"
 			class={cn(
-				"hover:text-foreground/80 transition-colors",
-				$page.url.pathname.startsWith('schulte') ? "text-foreground" : "text-foreground/60"
+				'transition-colors hover:text-foreground/80',
+				$page.url.pathname.startsWith('math') ? 'text-foreground' : 'text-foreground/60'
 			)}
 		>
-		{m.game_schulte()}
+			{m.nav_math()}
 		</a>
 		<a
-			href='./about'
+			href="./schulte"
 			class={cn(
-				"hover:text-foreground/80 transition-colors",
-				$page.url.pathname.startsWith('about') ? "text-foreground" : "text-foreground/60"
+				'transition-colors hover:text-foreground/80',
+				$page.url.pathname.startsWith('schulte') ? 'text-foreground' : 'text-foreground/60'
 			)}
 		>
-		{m.about()}
+			{m.game_schulte()}
+		</a>
+		<a
+			href="./about"
+			class={cn(
+				'transition-colors hover:text-foreground/80',
+				$page.url.pathname.startsWith('about') ? 'text-foreground' : 'text-foreground/60'
+			)}
+		>
+			{m.about()}
 		</a>
 	</nav>
 </div>

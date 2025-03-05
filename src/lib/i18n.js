@@ -4,5 +4,5 @@ import * as runtime from "$lib/paraglide/runtime.js"
 
 // sourceLanguageTag = "en"
 export const i18n = createI18n(runtime, {
-	defaultLanguageTag: "en",
+	defaultLanguageTag: "cn",
 });
