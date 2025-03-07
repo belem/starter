@@ -77,7 +77,7 @@
 	<meta name="description" content="{m.seo_poem_description()}, {m.seo_poem_description()}" />
 </svelte:head>
 
-<h2 class="pt-2 pb-4 text-lg font-semibold mt-4 flex flex-col items-center justify-center">{m.poem_title()}</h2>	
+<h2 class="pb-4 text-lg font-semibold mt-4 flex flex-col items-center justify-center">{m.poem_title()}</h2>	
 
 <div 
 	class="px-4 items-center justify-center"

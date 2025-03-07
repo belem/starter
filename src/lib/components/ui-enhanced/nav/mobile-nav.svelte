@@ -50,9 +50,12 @@
 						<span
 							class="ml-2 rounded-md bg-[#adfa1d] px-1.5 py-0.5 text-xs leading-none text-[#000000] no-underline group-hover:no-underline"
 						>
-							1
+							2
 						</span>
 					</h4>
+					<MobileLink class="ml-4" href="/mathquiz" bind:open>
+						{m.qcz_title()}
+					</MobileLink>
 					<MobileLink class="ml-4" href="/math" bind:open>
 						{m.math_bf_title()}
 					</MobileLink>

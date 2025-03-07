@@ -17,29 +17,62 @@
 	<nav class="flex items-center gap-6 text-sm">
 		<DropdownMenu.Root>
 			<DropdownMenu.Trigger asChild let:builder>
-				<Button variant="ghost" builders={[builder]} class="font-normal hover:bg-transparent h-auto px-0 py-0 transition-colors hover:text-foreground/80 text-foreground/60">
+				<Button
+					variant="ghost"
+					builders={[builder]}
+					class="h-auto px-0 py-0 font-normal text-foreground/60 transition-colors hover:bg-transparent hover:text-foreground/80"
+				>
 					{m.nav_language()}
 				</Button>
 			</DropdownMenu.Trigger>
 			<DropdownMenu.Content>
 				<DropdownMenu.RadioGroup>
-						<DropdownMenu.RadioItem value="fff">
-							<a href="./poem">
-								{m.nav_poem()}
-							</a>
-						</DropdownMenu.RadioItem>
+					<DropdownMenu.RadioItem value="fff">
+						<a href="./poem">
+							{m.nav_poem()}
+						</a>
+					</DropdownMenu.RadioItem>
 				</DropdownMenu.RadioGroup>
 			</DropdownMenu.Content>
 		</DropdownMenu.Root>
-		<a
-			href="./math"
-			class={cn(
-				'transition-colors hover:text-foreground/80',
-				$page.url.pathname.startsWith('math') ? 'text-foreground' : 'text-foreground/60'
-			)}
-		>
-			{m.nav_math()}
-		</a>
+		<DropdownMenu.Root>
+			<DropdownMenu.Trigger asChild let:builder>
+				<Button
+					variant="ghost"
+					builders={[builder]}
+					class="h-auto px-0 py-0 font-normal text-foreground/60 transition-colors hover:bg-transparent hover:text-foreground/80"
+				>
+					{m.nav_math()}
+				</Button>
+			</DropdownMenu.Trigger>
+			<DropdownMenu.Content>
+				<DropdownMenu.RadioGroup>
+					<DropdownMenu.RadioItem value="fff">
+						<a
+							href="./math"
+							class={cn(
+								'transition-colors hover:text-foreground/80',
+								$page.url.pathname.startsWith('math') ? 'text-foreground' : 'text-foreground/60'
+							)}
+						>
+							{m.nav_math()}
+						</a>
+					</DropdownMenu.RadioItem>
+					<DropdownMenu.RadioItem value="fff">
+						<a
+							href="./mathquiz"
+							class={cn(
+								'transition-colors hover:text-foreground/80',
+								$page.url.pathname.startsWith('mathquiz') ? 'text-foreground' : 'text-foreground/60'
+							)}
+						>
+							{m.qcz_title()}
+						</a>
+					</DropdownMenu.RadioItem>
+				</DropdownMenu.RadioGroup>
+			</DropdownMenu.Content>
+		</DropdownMenu.Root>
+
 		<a
 			href="./schulte"
 			class={cn(

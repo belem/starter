@@ -386,6 +386,10 @@ body {
 	background-color: #191919;
 }
 
+.qcz {
+	min-height: calc(100vh - 56px);
+}
+
 @media (max-width: 1280px) {
 	.schulte .cell {
 		width: 80px;
