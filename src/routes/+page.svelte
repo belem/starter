@@ -23,8 +23,8 @@
 </script>
 
 <svelte:head>
-	<title>{m.title()} - {m.seo_poem_title()}, {m.pcz_title()}, {m.seo_math_title()}, {m.seo_schulte_title()}</title>
-	<meta name="keywords" content="{m.seo_poem_keywords()}, {m.seo_pcz_keywords()},{m.seo_math_keywords()},  {m.seo_schulte_keywords()}">
-	<meta name="description" content="{m.seo_description()}, {m.seo_poem_description()}, {m.seo_scz_description()}, {m.seo_math_description()}, {m.seo_schulte_description()}">
+	<title>{m.title()} - {m.seo_poem_title()}, {m.qcz_title()}, {m.seo_math_title()}, {m.seo_schulte_title()}</title>
+	<meta name="keywords" content="{m.seo_poem_keywords()}, {m.seo_qcz_keywords()},{m.seo_math_keywords()}, {m.seo_schulte_keywords()}">
+	<meta name="description" content="{m.seo_description()}, {m.seo_poem_description()}, {m.seo_qcz_description()}, {m.seo_math_description()}, {m.seo_schulte_description()}">
 </svelte:head>
 <Home />
