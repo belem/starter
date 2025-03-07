@@ -65,7 +65,7 @@
 			<li>Continued use of Kuibu implies acceptance of updated terms</li>
 		</ol>
 
-		<div class="mt-2">Last Updated: Dec 9, 2024</div>
+		<div class="mt-2">Last Updated: Sep 8, 2024</div>
 	</div>
 
 	<SiteFooter></SiteFooter>

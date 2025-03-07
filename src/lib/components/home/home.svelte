@@ -17,8 +17,9 @@
 		</div>
 		<section class="grid grid-cols-1 md:grid-cols-3 gap-4 w-full items-center justify-center py-4 md:pb-10">
 			<Button href="/poem" variant="outline" class="bg-transparent hover:bg-gray-100 dark:hover:bg-gray-900 dark:border-gray-700 rounded-[6px] p-4 py-8 text-xl">{m.poem_title()}</Button>
+			<Button href="/mathquiz" variant="outline" class="bg-transparent hover:bg-gray-100 dark:hover:bg-gray-900 dark:border-gray-700 rounded-[6px] p-4 py-8 text-xl">{m.qcz_title()}</Button>
 			<Button href="/math" variant="outline" class="bg-transparent hover:bg-gray-100 dark:hover:bg-gray-900 dark:border-gray-700 rounded-[6px] p-4 py-8 text-xl">{m.math_bf_title()}</Button>
-			<Button href="/schulte" class="rounded-[6px] p-4 py-8 dark:text-white text-xl">{m.game_schulte()}</Button>
+			<Button href="/schulte" variant="outline" class="bg-transparent hover:bg-gray-100 dark:hover:bg-gray-900 dark:border-gray-700 rounded-[6px] p-4 py-8 text-xl">{m.game_schulte()}</Button>
 			<!-- <Button href="/auth/login" variant="outline" class="rounded-[6px]">{m.user_login()}</Button> -->
 		</section>
 	</PageHeader.Root>

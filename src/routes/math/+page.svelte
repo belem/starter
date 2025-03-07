@@ -383,7 +383,7 @@
 <div class="flex h-full flex-col">
 	<div
 		id="sub-nav"
-		class=" container flex flex-col items-center justify-between space-y-0 px-4 py-4 md:h-16 md:flex-row 2xl:px-0"
+		class=" container flex flex-col items-center justify-between space-y-0 gap-2 px-4 py-4 md:h-16 md:flex-row 2xl:px-0"
 	>
 		<h2 class="text-lg font-semibold">{m.math_bf_title()}</h2>
 		<div class="space-y-2 md:space-y-0">

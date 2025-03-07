@@ -20,10 +20,6 @@
 		{m.description()}
 		<br /><br />
 		{m.seo_description()}
-
-		<div class="mt-6">
-			For any questions or concerns, please contact hi[at]live.com with title starts with "Kuibu:"
-		</div>
 	</div>
 	<SiteFooter></SiteFooter>
 </div>

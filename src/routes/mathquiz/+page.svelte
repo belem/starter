@@ -344,8 +344,7 @@
 	<meta name="description" content="{m.seo_qcz_description()}, {m.seo_schulte_description()}" />
 </svelte:head>
 
-<div class="qcz bg-sky-50 dark:bg-gray-900 flex flex-col font-comic">
-  <main class="flex-grow flex flex-col items-center justify-center p-4">
+  <main class="qcz bg-sky-50 dark:bg-gray-900 grid w-auto grid-cols-1 justify-items-center items-center justify-center p-4">
     {#if screen === 'settings'}
       <div class="w-full max-w-md bg-background/95 supports-[backdrop-filter]:bg-background/60 dark:bg-gray-800 rounded-lg shadow-lg p-6 mb-4" transition:fade>
         <h2 class="text-xl font-bold text-center mb-6 text-sky-600">{m.qcz_gameSettings()}</h2>
@@ -425,7 +424,7 @@
     {:else if screen === 'game'}
       <div class="w-full max-w-md" transition:fade>
         <!-- Timer and Score -->
-				<h3 class="text-xl text-center font-bold mb-8">{m.qcz_title()}</h3>
+				<h3 class="text-xl text-center font-bold mb-8 mt-[-42px]">{m.qcz_title()}</h3>
         <div class="flex justify-between items-center">
           <div class="text-xl bg-sky-100 dark:bg-sky-900 px-4 py-2 rounded-lg">
             {m.qcz_score()}: {score}
@@ -473,7 +472,7 @@
       </div>
     {/if}
   </main>
-</div>
+ 
 
 <style>
 	.option-btn {
