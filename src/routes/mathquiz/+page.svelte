@@ -347,11 +347,11 @@
 <div class="qcz bg-sky-50 dark:bg-gray-900 flex flex-col font-comic">
   <main class="flex-grow flex flex-col items-center justify-center p-4">
     {#if screen === 'settings'}
-      <div class="w-full max-w-md bg-gray-50 dark:bg-gray-800 rounded-lg shadow-lg p-6 mb-4" transition:fade>
+      <div class="w-full max-w-md bg-background/95 supports-[backdrop-filter]:bg-background/60 dark:bg-gray-800 rounded-lg shadow-lg p-6 mb-4" transition:fade>
         <h2 class="text-xl font-bold text-center mb-6 text-sky-600">{m.qcz_gameSettings()}</h2>
         
         <div class="mb-4">
-          <label class="block text-gray-700 mb-2">{m.qcz_rules()}:</label>
+          <label class="block text-gray-700 dark:text-gray-500 mb-2">{m.qcz_rules()}:</label>
           <select bind:value={settings.operationRules} class="w-full p-2 border rounded-md">
             <option value="addition">{m.qcz_addition()}</option>
             <option value="subtraction">{m.qcz_subtraction()}</option>
@@ -364,7 +364,7 @@
         </div>
 
         <div class="mb-4">
-          <label class="block text-gray-700 mb-2">{m.qcz_nr()}:</label>
+          <label class="block text-gray-700 dark:text-gray-500 mb-2">{m.qcz_nr()}:</label>
           <select bind:value={settings.numberRange} class="w-full p-2 border rounded-md">
             <option value="100">{m.qcz_within_100()}</option>
             <option value="1000">{m.qcz_within_1000()}</option>
@@ -372,7 +372,7 @@
         </div>
 
         <div class="mb-4">
-          <label class="block text-gray-700 mb-2">{m.qcz_carry()}:</label>
+          <label class="block text-gray-700 dark:text-gray-500 mb-2">{m.qcz_carry()}:</label>
           <div class="flex items-center">
             <input type="checkbox" bind:checked={settings.supportCarry} id="supportCarry" class="mr-2">
             <label for="supportCarry">{m.qcz_yes()}</label>
@@ -380,7 +380,7 @@
         </div>
 
         <div class="mb-4">
-          <label class="block text-gray-700 mb-2">{m.qcz_borrow()}:</label>
+          <label class="block text-gray-700 dark:text-gray-500 mb-2">{m.qcz_borrow()}:</label>
           <div class="flex items-center">
             <input type="checkbox" bind:checked={settings.supportBorrow} id="supportBorrow" class="mr-2">
             <label for="supportBorrow">{m.qcz_yes()}</label>
@@ -388,7 +388,7 @@
         </div>
 
         <div class="mb-6">
-          <label class="block text-gray-700 mb-2">{m.qcz_timer()}:</label>
+          <label class="block text-gray-700 dark:text-gray-500 mb-2">{m.qcz_timer()}:</label>
           <select bind:value={settings.timerDuration} class="w-full p-2 border rounded-md">
             <option value="30">30 {m.qcz_seconds()}</option>
             <option value="60">1 {m.qcz_minute()}</option>
@@ -403,14 +403,14 @@
         </button>
       </div>
 
-      <div class="w-full max-w-md bg-gray-50 dark:bg-gray-800 rounded-lg shadow-lg p-6" transition:fade>
+      <div class="w-full max-w-md bg-background/95 supports-[backdrop-filter]:bg-background/60 dark:bg-gray-800 rounded-lg shadow-lg p-6" transition:fade>
         <h2 class="text-xl font-bold text-center mb-4 text-sky-600">{m.qcz_preRecords()}</h2>
         {#if Object.keys(records).length === 0}
           <p class="text-center text-gray-500">{m.qcz_noRecords()}</p>
         {:else}
           <div class="overflow-y-auto max-h-44">
             {#each Object.entries(records) as [key, value]}
-              <div class="mb-2 p-2 bg-white dark:bg-gray-900 rounded-md">
+              <div class="mb-2 p-2 bg-sky-50 dark:bg-gray-900 rounded-md">
                 <p class="text-sm">
                   <span class="font-semibold">{m.qcz_setting()}:</span> {formatSettingKey(key)}
                 </p>
