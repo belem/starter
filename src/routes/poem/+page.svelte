@@ -83,22 +83,22 @@
 	class="px-4 items-center justify-center"
 >
 	<div 
-		class="w-full flex flex-col md:px-8 md:grid md:grid-cols-4 gap-4 md:items-center md:justify-center {isRefreshing ? 'animate-pulse' : ''}"
+		class="poem shadow-sm rounded-lg border border-gray-100 dark:border-gray-600 flex flex-col md:px-8 md:grid md:grid-cols-4 gap-0 md:items-center md:justify-center {isRefreshing ? 'animate-pulse' : ''}"
 	>
 		{#each displayedPoems as poemItem (poemItem.name)}
 			<div 
 				transition:fly={{ y: 50, duration: 300 }}
-				class="rounded-md p-4 border border-gray-100 dark:border-gray-600 hover:shadow-sm transition-all duration-300 ease-in-out transform hover:-translate-y-1"
+				class="hover:shadow-sm transition-all duration-300 ease-in-out transform hover:-translate-y-1"
 			>
 				{#if poemItem.url}
-					<a href={poemItem.url} rel="noopener noreferrer" class="flex flex-row md:flex-col gap-4 items-center justify-center">
+					<a href={poemItem.url} rel="noopener noreferrer" class="p-4 border-solid border-b-[1px] border-gray-100 dark:border-gray-600 flex flex-col gap-2 items-center justify-center">
 						<h2 class="text-xl font-bold text-gray-800 dark:text-white">{poemItem.name}</h2>
-						<p class="text-gray-600 md:mt-[-10px] text-md">{poemItem.author}</p>
+						<p class="text-gray-500 md:mt-[-10px] text-md">{poemItem.author}</p>
 					</a>
 				{:else}
-					<div class="flex flex-row md:flex-col gap-4 items-center justify-center">
+					<div class="p-4 border-solid border-b-[1px] border-gray-100 dark:border-gray-600 flex flex-row md:flex-col gap-2 items-center justify-center">
 						<h2 class="text-xl font-bold text-gray-800 dark:text-white">{poemItem.name}</h2>
-						<p class="text-gray-600 md:mt-[-10px] text-md">{poemItem.author}</p>
+						<p class="text-gray-500 md:mt-[-10px] text-md">{poemItem.author}</p>
 					</div>
 				{/if}
 			</div>
@@ -110,13 +110,11 @@
 	</div>
 </div>
 
-<div class="grid grid-cols-3 mx-4 md:mx-12 mt-4 text-muted-foreground text-center text-md rounded-md p-4 border border-gray-100 dark:border-gray-600 hover:shadow-sm transition-all duration-300 ease-in-out transform hover:-translate-y-1">
+<div class="md:rounded-lg md:border md:border-gray-100 z-1 fixed md:static bottom-0 left-0 w-screen md:w-auto grid grid-cols-3 justify-items-stretch mx-0 md:mx-4 md:mt-4 text-muted-foreground text-center text-md p-4 backdrop-blur bg-background/95 supports-[backdrop-filter]:bg-background/60 border-solid border-t-[1px] border-gray-100 dark:border-gray-600 hover:shadow-sm transition-all duration-300 ease-in-out transform hover:-translate-y-1">
 	<a href="https://haitang.app/collections/423">沪教版</a> 
 	<a href="https://haitang.app/collections/421">苏教版</a>
 	<a href="https://haitang.app/collections/420">人教版</a>
-</div>	
-
-<SiteFooter></SiteFooter>
+</div>
 
 <!-- <div class="schulte flex h-full flex-col">
 	<h2 class="text-lg font-semibold">{m.poem_title()}</h2>
@@ -128,7 +126,6 @@
 </div> -->
 
 <style>
-	/* Custom scrollbar for WebKit browsers */
 	::-webkit-scrollbar {
 		width: 6px;
 	}

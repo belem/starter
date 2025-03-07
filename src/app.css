@@ -374,6 +374,18 @@ body {
 	transform: translateX(20px);
 }
 
+.poem div a:last-child, .poem div div:last-child {
+	border-bottom: 0px solid transparent;
+}
+
+.poem div:nth-child(odd) {
+	background-color: #f9f9f9;
+}
+
+.dark .poem div:nth-child(odd) {
+	background-color: #191919;
+}
+
 @media (max-width: 1280px) {
 	.schulte .cell {
 		width: 80px;

@@ -21,7 +21,7 @@
 		<MobileNav />
 		<div class="flex flex-1 items-center justify-between space-x-2 md:justify-end">
 			<div class="w-full flex-1 md:w-auto md:flex-none">
-				<CommandMenu />
+				<!-- <CommandMenu /> -->
 			</div>
 			<nav class="flex items-center">
 				<a href={siteConfig.links.github} target="_blank" rel="noopener noreferrer">

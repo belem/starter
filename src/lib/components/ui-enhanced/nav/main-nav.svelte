@@ -17,7 +17,7 @@
 	<nav class="flex items-center gap-6 text-sm">
 		<DropdownMenu.Root>
 			<DropdownMenu.Trigger asChild let:builder>
-				<Button variant="ghost" builders={[builder]} class="hover:bg-transparent h-auto px-0 py-0 transition-colors hover:text-foreground/80 text-foreground/60">
+				<Button variant="ghost" builders={[builder]} class="font-normal hover:bg-transparent h-auto px-0 py-0 transition-colors hover:text-foreground/80 text-foreground/60">
 					{m.nav_language()}
 				</Button>
 			</DropdownMenu.Trigger>
