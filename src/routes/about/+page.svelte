@@ -16,7 +16,7 @@
 <div class="schulte flex h-full flex-col">
 	<h2 class="text-lg font-semibold">{m.title()} - {m.about()}</h2>
 
-	<div class="mt-4">
+	<div class="mt-4 text-center">
 		{m.description()}
 		<br /><br />
 		{m.seo_description()}

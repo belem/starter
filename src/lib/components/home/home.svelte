@@ -9,7 +9,7 @@
 <div class="container relative pb-10">
 	<PageHeader.Root>
 		<!-- <Announcement /> -->
-		<div class="flex text-5xl md:text-6xl gap-x-1 md:gap-x-3 mt-4 items-center text-gray-800 dark:text-white">
+		<div class="flex text-4xl md:text-5xl font-medium gap-x-1 md:gap-x-3 mt-4 items-center text-gray-800 dark:text-white">
 			<Logo class="h-10 w-10 md:h-12 md:w-12" /> {m.title()}
 		</div>
 		<div class="text-lg md:text-2xl text-gray-400 my-4">
