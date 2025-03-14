@@ -86,6 +86,8 @@
     "qcz_multiplicationDivision": "Multiplikation & Division",
     "qcz_all": "Alle Operationen",
     "qcz_nr": "Zahlenbereich",
+    "qcz_within_20": "Bis 20",
+    "qcz_within_50": "Bis 50",
     "qcz_within_100": "Bis 100",
     "qcz_within_1000": "Bis 1000",
     "qcz_carry": "Übertrag bei Addition unterstützen",

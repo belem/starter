@@ -19,6 +19,8 @@
 	let screen = 'settings'; // 'settings', 'game', 'results'
 	let currentQuestion = null;
 	let score = 0;
+	let totalAttempts = 0;
+	let correctPercentage = 0;
 	let timeLeft = 0;
 	let timer;
 	let records = {};
@@ -45,6 +47,8 @@
 	function startGame() {
 		screen = 'game';
 		score = 0;
+		totalAttempts = 0;
+		correctPercentage = 0;
 		timeLeft = parseInt(settings.timerDuration);
 		generateQuestion();
 
@@ -254,6 +258,7 @@
 	}
 
 	function checkAnswer(selectedOption) {
+		totalAttempts++;
 		const isCorrect = selectedOption === currentQuestion.correctAnswer;
 
 		if (isCorrect) {
@@ -262,6 +267,9 @@
 		} else {
 			playSound('wrong');
 		}
+
+		// Update percentage
+		correctPercentage = (score / totalAttempts) * 100;
 
 		// Move to next question after a short delay
 		setTimeout(() => {
@@ -276,11 +284,31 @@
 		screen = 'results';
 		playSound('gameOver');
 
+		// Ensure percentage is calculated correctly
+		correctPercentage = totalAttempts > 0 ? ((score / totalAttempts) * 100).toFixed(1) : 0;
+
 		// Check if new record
 		const settingKey = getSettingKey();
 
-		if (!records[settingKey] || score > records[settingKey]) {
-			records[settingKey] = score;
+		// If no record exists for this setting or the percentage is higher
+		if (!records[settingKey] || correctPercentage > records[settingKey].percentage) {
+			records[settingKey] = {
+				score: score,
+				total: totalAttempts,
+				percentage: correctPercentage
+			};
+			localStorage.setItem('quickCalcRecords', JSON.stringify(records));
+			newRecord = true;
+			// If percentage is equal but score is higher
+		} else if (
+			correctPercentage == records[settingKey].percentage &&
+			score > records[settingKey].score
+		) {
+			records[settingKey] = {
+				score: score,
+				total: totalAttempts,
+				percentage: correctPercentage
+			};
 			localStorage.setItem('quickCalcRecords', JSON.stringify(records));
 			newRecord = true;
 		} else {
@@ -358,7 +386,7 @@
 </svelte:head>
 
 <main
-	class="qcz flex w-auto h-full flex-col items-center justify-center justify-items-center bg-sky-50 p-4 dark:bg-gray-900"
+	class="qcz flex h-full w-auto flex-col items-center justify-center justify-items-center bg-sky-50 p-4 dark:bg-gray-900"
 >
 	{#if screen === 'settings'}
 		<div
@@ -383,6 +411,8 @@
 			<div class="mb-4">
 				<label class="mb-2 block text-gray-700 dark:text-gray-500">{m.qcz_nr()}:</label>
 				<select bind:value={settings.numberRange} class="w-full rounded-md border p-2">
+					<option value="20">{m.qcz_within_20 ? m.qcz_within_20() : 'Within 20'}</option>
+					<option value="50">{m.qcz_within_50 ? m.qcz_within_50() : 'Within 50'}</option>
 					<option value="100">{m.qcz_within_100()}</option>
 					<option value="1000">{m.qcz_within_1000()}</option>
 				</select>
@@ -451,7 +481,7 @@
 							</p>
 							<p class="text-sm">
 								<span class="font-semibold">{m.qcz_best()}:</span>
-								{value}
+								{value.score}/{value.total} ({value.percentage}%)
 							</p>
 						</div>
 					{/each}
@@ -459,13 +489,17 @@
 			{/if}
 		</div>
 	{:else if screen === 'game'}
-		<div class="w-full h-screen flex flex-col " transition:fade>
-      <h3 class="text-center text-xl font-bold text-sky-600 dark:text-sky-400 mt-8 mb-8">{m.qcz_title()}</h3>
+		<div class="flex h-screen w-full flex-col" transition:fade>
+			<h3 class="mb-8 mt-8 text-center text-xl font-bold text-sky-600 dark:text-sky-400">
+				{m.qcz_title()}
+			</h3>
 			<div class="flex items-center justify-between">
-				<div class="rounded-lg bg-sky-100 px-4 py-2 text-md dark:bg-sky-900">
-					{m.qcz_score()}: {score}
+				<div class="text-md rounded-lg bg-sky-100 px-4 py-2 dark:bg-sky-900">
+					{m.qcz_score()}: {score}/{totalAttempts} ({totalAttempts > 0
+						? ((score / totalAttempts) * 100).toFixed(1)
+						: 0}%)
 				</div>
-				<div class="rounded-lg bg-pink-100 px-4 py-2 text-md dark:bg-pink-900">
+				<div class="text-md rounded-lg bg-pink-100 px-4 py-2 dark:bg-pink-900">
 					{m.qcz_time()}: {formatTime(timeLeft)}
 				</div>
 			</div>
@@ -493,7 +527,8 @@
 		>
 			<h2 class="mb-4 text-2xl font-bold">{m.qcz_complete()}</h2>
 
-			<div class="mb-6 text-4xl font-bold text-sky-600">{score}</div>
+			<div class="mb-2 text-4xl font-bold text-sky-600">{score}/{totalAttempts}</div>
+			<div class="mb-6 text-2xl font-bold text-pink-600">{correctPercentage}%</div>
 
 			{#if newRecord}
 				<div

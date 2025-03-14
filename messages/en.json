@@ -86,6 +86,8 @@
     "qcz_multiplicationDivision": "Multiplication & Division",
     "qcz_all": "All Operations",
     "qcz_nr": "Number Range",
+    "qcz_within_20": "Within 20",
+    "qcz_within_50": "Within 50",
     "qcz_within_100": "Within 100",
     "qcz_within_1000": "Within 1000",
     "qcz_carry": "Support Carry in Addition", 

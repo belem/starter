@@ -86,6 +86,8 @@
     "qcz_multiplicationDivision": "乘除混合",
     "qcz_all": "四则运算",
     "qcz_nr": "运算范围",
+    "qcz_within_20": "20 以内",
+    "qcz_within_50": "50 以内",
     "qcz_within_100": "100 以内",
     "qcz_within_1000": "1000 以内",
     "qcz_carry": "加法进位",
