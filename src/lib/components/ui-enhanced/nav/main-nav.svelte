@@ -83,6 +83,15 @@
 			{m.game_schulte()}
 		</a>
 		<a
+			href="./timetable"
+			class={cn(
+				'transition-colors hover:text-foreground/80',
+				$page.url.pathname.startsWith('timetable') ? 'text-foreground' : 'text-foreground/60'
+			)}
+		>
+		 Timetable
+		</a>
+		<a
 			href="./about"
 			class={cn(
 				'transition-colors hover:text-foreground/80',

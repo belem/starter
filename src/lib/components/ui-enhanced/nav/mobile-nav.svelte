@@ -76,6 +76,9 @@
 					<MobileLink class="ml-4" href="/tou" bind:open>
 						{m.tou()}
 					</MobileLink>
+					<MobileLink class="ml-4" href="/timetable" bind:open>
+						Timetable
+					</MobileLink>
 					<MobileLink class="ml-4" href="/about" bind:open>
 						{m.about()}
 					</MobileLink>
