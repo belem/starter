@@ -111,9 +111,9 @@
 </div>
 
 <div class="md:rounded-lg md:border md:border-gray-100 z-1 fixed md:static bottom-0 left-0 w-screen md:w-auto grid grid-cols-3 justify-items-stretch mx-0 md:mx-4 md:mt-4 text-muted-foreground text-center text-md p-4 backdrop-blur bg-background/95 supports-[backdrop-filter]:bg-background/60 border-solid border-t-[1px] border-gray-100 dark:border-gray-600 hover:shadow-sm transition-all duration-300 ease-in-out transform hover:-translate-y-1">
-	<a href="https://haitang.app/collections/423">沪教版</a> 
-	<a href="https://haitang.app/collections/421">苏教版</a>
-	<a href="https://haitang.app/collections/420">人教版</a>
+	<a href="https://haitang.app/works?c=423">沪教版</a> 
+	<a href="https://haitang.app/works?c=421">苏教版</a>
+	<a href="https://haitang.app/works?c=420">人教版</a>
 </div>
 
 <!-- <div class="schulte flex h-full flex-col">
